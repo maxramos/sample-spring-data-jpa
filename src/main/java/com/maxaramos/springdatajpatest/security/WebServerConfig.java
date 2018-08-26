@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class WebServerConfig {
 
-	@Value("${invsys.server.http.port}")
+	@Value("${sdjt.server.http.port}")
 	private int httpPort;
 
 	@Value("${server.port}")

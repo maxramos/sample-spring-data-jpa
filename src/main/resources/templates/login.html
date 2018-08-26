@@ -11,14 +11,6 @@
 		You have been logged out.
 	</p>
 	<div>
-		<h3 style="margin-bottom: 0">Login via</h3>
-		<ul style="margin-top: 0">
-			<li th:each="clientRegistration : ${clientRegistrationList}">
-				<a href="#" th:href="@{'/oauth2/authorization/' + ${clientRegistration.registrationId}}"  th:text="${clientRegistration.clientName}">Provider</a>
-			</li>
-		</ul>
-	</div>
-	<div>
 		<h3 style="margin-bottom: 0">Login</h3>
 		<p th:if="${param.error}">
 			Invalid username or password.

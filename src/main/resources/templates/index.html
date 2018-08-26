@@ -23,8 +23,6 @@
 	<div>
 		<span>You are successfully logged in </span>
 		<span style="font-weight: bold" sec:authentication="name"></span>
-		<span th:if="${clientName}">via </span>
-		<span th:if="${clientName}" style="font-weight: bold" th:text="${clientName}"></span>
 	</div>
 	<br />
 	<div>
@@ -40,10 +38,6 @@
 				<span th:text="${role.authority}">role</span>
 			</li>
 		</ul>
-	</div>
-	<br />
-	<div th:if="${clientName}">
-		<a href="/userinfo" th:href="@{/userinfo}">Display User Info</a>
 	</div>
 </body>
 </html>
