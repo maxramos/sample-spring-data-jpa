@@ -18,15 +18,8 @@ public class MainController {
 	@GetMapping("/")
 	public String index(Model model, Authentication authentication) {
 		User user = userService.findByUsername(authentication.getName());
-
-		if (user != null) {
-			model.addAttribute("username", user.getUsername());
-			model.addAttribute("password", user.getPassword());
-			model.addAttribute("role", user.getAuthorities().stream().findAny().orElse(null));
-		}
-
-		String authority = user.getAuthorities().stream().findFirst().get().getAuthority();
-		return "ROLE_ADMIN".equals(authority) ? "/admin/index" : "/index";
+		model.addAttribute("user", user);
+		return "/index";
 	}
 
 }

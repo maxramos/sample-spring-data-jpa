@@ -27,15 +27,18 @@
 	<br />
 	<div>
 		<span style="font-weight: bold">Credentials:</span>
-		<ul>
+		<ul th:object="${user}">
 			<li>
-				<span th:text="${username}">username</span>
+				<span th:text="*{username}">username</span>
 			</li>
 			<li>
-				<span th:text="${password}">password</span>
+				<span th:text="*{password}">password</span>
 			</li>
 			<li>
-				<span th:text="${role.authority}">role</span>
+				<span th:text="*{role.authority}">role</span>
+			</li>
+			<li>
+				<span th:text="*{email}">email</span>
 			</li>
 		</ul>
 	</div>

@@ -1,8 +1,5 @@
 package com.maxaramos.springdatajpatest.service;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -52,9 +49,10 @@ public class UserService implements UserDetailsService {
 
 	public void save(UserForm userForm) {
 		Authority authority = authorityDao.findByAuthority("ROLE_USER");
-		Set<Authority> authorities = new HashSet<>();
-		authorities.add(authority);
-		User user = new User(userForm.getUsername(), passwordEncoder.encode(userForm.getPassword()), authorities);
+		User user = new User(userForm.getUsername());
+		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+		user.addAuthority(authority);
+		user.setEmail(userForm.getEmail());
 		userDao.save(user);
 	}
 

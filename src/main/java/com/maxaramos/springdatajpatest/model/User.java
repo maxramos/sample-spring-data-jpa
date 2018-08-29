@@ -1,5 +1,6 @@
 package com.maxaramos.springdatajpatest.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -32,25 +33,30 @@ public class User implements UserDetails {
 	@Column(name = "password")
 	private String password;
 
-	@Column(name = "enabled")
-	private Boolean enabled;
-
 	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(
-			name = "users_authorities",
+	@JoinTable(name = "users_authorities",
 			joinColumns = @JoinColumn(name = "user_id", table = "users", referencedColumnName = "id"),
 			inverseJoinColumns= @JoinColumn(name = "authority_id", table = "authorities", referencedColumnName = "id"))
 	private Set<Authority> authorities;
+
+	@Column(name = "enabled")
+	private Boolean enabled;
+
+	@Column(name = "email")
+	private String email;
 
 	public User() {
 		super();
 	}
 
-	public User(String username, String password, Set<Authority> authorities) {
+	public User(String username) {
 		this.username = username;
-		this.password = password;
-		this.authorities = authorities;
+		authorities = new HashSet<>();
 		enabled = true;
+	}
+
+	public void addAuthority(Authority authority) {
+		authorities.add(authority);
 	}
 
 	public Long getId() {
@@ -67,9 +73,17 @@ public class User implements UserDetails {
 		return password;
 	}
 
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public Set<Authority> getAuthorities() {
 		return authorities;
+	}
+
+	public Authority getRole() {
+		return authorities.stream().findAny().orElse(null);
 	}
 
 	@Override
@@ -92,11 +106,17 @@ public class User implements UserDetails {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return String.format("User [id=%s, username=%s, password=%s, enabled=%s, authorities=%s]", id, username, password, enabled, authorities);
+	public String getEmail() {
+		return email;
 	}
 
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
+	@Override
+	public String toString() {
+		return String.format("User [id=%s, username=%s, password=%s, authorities=%s, enabled=%s, email=%s]", id, username, password, authorities, enabled, email);
+	}
 
 }

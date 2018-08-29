@@ -46,6 +46,17 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<label for="email">Email</label>
+					</td>
+					<td>
+						<input type="email" th:field="*{email}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Invalid Email</p>
+					</td>
+				</tr>
+				<tr>
 					<td colspan="2">
 						<input type="submit" value="Submit" />
 					</td>
