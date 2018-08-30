@@ -20,6 +20,11 @@
 		</div>
 	</div>
 	<h1>Home</h1>
+	<nav>
+		<span sec:authorize-url="/admin/home">
+			<a href="/admin/home" th:href="@{/admin/home}">Admin</a>
+		</span>
+	</nav>
 	<div>
 		<span>You are successfully logged in </span>
 		<span style="font-weight: bold" sec:authentication="name"></span>
