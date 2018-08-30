@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-	<title>Index</title>
+	<title>Home</title>
 	<meta charset="utf-8" />
 </head>
 <body>
@@ -21,31 +21,19 @@
 	</div>
 	<h1>Home</h1>
 	<nav>
-		<span sec:authorize-url="/admin/home">
-			<a href="/admin/home" th:href="@{/admin/home}">Admin</a>
+		<span sec:authorize-url="/admin/profile">
+			<a href="/admin/profile" th:href="@{/admin/profile}">Profile</a>
+		</span>
+		<span sec:authorize-url="/admin/users">
+			<a href="/admin/users" th:href="@{/admin/users}">Users</a>
+		</span>
+		<span sec:authorize-url="/user/profile">
+			<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
 		</span>
 	</nav>
 	<div>
 		<span>You are successfully logged in </span>
 		<span style="font-weight: bold" sec:authentication="name"></span>
-	</div>
-	<br />
-	<div>
-		<span style="font-weight: bold">Credentials:</span>
-		<ul th:object="${user}">
-			<li>
-				<span th:text="*{username}">username</span>
-			</li>
-			<li>
-				<span th:text="*{password}">password</span>
-			</li>
-			<li>
-				<span th:text="*{role.authority}">role</span>
-			</li>
-			<li>
-				<span th:text="*{email}">email</span>
-			</li>
-		</ul>
 	</div>
 </body>
 </html>

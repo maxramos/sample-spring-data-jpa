@@ -15,11 +15,16 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping("/admin/home")
-	public String home(Model model, Authentication authentication) {
+	@GetMapping("/admin/profile")
+	public String profile(Model model, Authentication authentication) {
 		User user = userService.findByUsername(authentication.getName());
 		model.addAttribute("user", user);
-		return "/admin/home";
+		return "/admin/profile";
+	}
+
+	@GetMapping("/admin/users")
+	public String users(Model model, Authentication authentication) {
+		return "/admin/users";
 	}
 
 }

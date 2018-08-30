@@ -3,26 +3,18 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-	<title>Admin</title>
+	<title>Profile</title>
 	<meta charset="utf-8" />
 </head>
 <body>
-	<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
-		<div style="float: left">
-			<span style="font-weight: bold">User: </span>
-			<span sec:authentication="name"></span>
-		</div>
-		<div style="float: none">&nbsp;</div>
-		<div style="float: right">
-			<form action="#" th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" />
-			</form>
-		</div>
-	</div>
-	<h1>Admin</h1>
+	<div th:replace="index::logout"></div>
+	<h1>Profile</h1>
 	<nav>
 		<span>
 			<a href="/" th:href="@{/}">Home</a>
+		</span>
+		<span sec:authorize-url="/admin/users">
+			<a href="/admin/users" th:href="@{/admin/users}">Users</a>
 		</span>
 	</nav>
 	<div>

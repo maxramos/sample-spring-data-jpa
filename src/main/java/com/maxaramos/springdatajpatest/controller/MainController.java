@@ -17,9 +17,14 @@ public class MainController {
 
 	@GetMapping("/")
 	public String index(Model model, Authentication authentication) {
+		return "/index";
+	}
+
+	@GetMapping("/user/profile")
+	public String profile(Model model, Authentication authentication) {
 		User user = userService.findByUsername(authentication.getName());
 		model.addAttribute("user", user);
-		return "/index";
+		return "/user/profile";
 	}
 
 }
