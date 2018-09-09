@@ -3,16 +3,21 @@ package com.maxaramos.springdatajpatest.dao;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.repository.RepositoryDefinition;
 
 import com.maxaramos.springdatajpatest.model.User;
 
-public interface UserDao extends Repository<User, String> {
+@RepositoryDefinition(
+		domainClass = User.class,
+		idClass = Long.class)
+public interface UserDao {
 
 	List<User> findAll();
 
 	Optional<User> findByUsername(String username);
 
 	User save(User user);
+
+	void deleteById(Long id);
 
 }

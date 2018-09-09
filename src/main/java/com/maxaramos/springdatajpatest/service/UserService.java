@@ -53,7 +53,7 @@ public class UserService implements UserDetailsService {
 		return userDao.findByUsername(username).orElse(null);
 	}
 
-	public void save(UserForm userForm) {
+	public User save(UserForm userForm) {
 		Authority authority = authorityDao.findByAuthority("ROLE_USER").orElse(null);
 		User user = new User(userForm.getUsername());
 		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
@@ -61,7 +61,11 @@ public class UserService implements UserDetailsService {
 		user.setEmail(userForm.getEmail());
 		user.setFirstName(userForm.getFirstName());
 		user.setLastName(userForm.getLastName());
-		userDao.save(user);
+		return userDao.save(user);
+	}
+
+	public void deleteById(Long id) {
+		userDao.deleteById(id);
 	}
 
 }
