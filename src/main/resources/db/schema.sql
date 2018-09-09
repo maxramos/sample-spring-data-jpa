@@ -3,7 +3,9 @@ CREATE TABLE users (
 	username VARCHAR(20) NOT NULL UNIQUE,
 	password VARCHAR(60) NOT NULL DEFAULT '',
 	enabled BOOLEAN NOT NULL DEFAULT TRUE,
-	email VARCHAR(30) NOT NULL UNIQUE
+	email VARCHAR(30) NOT NULL UNIQUE,
+	first_name VARCHAR(20),
+	last_name VARCHAR(20),
 );
 
 CREATE TABLE authorities (

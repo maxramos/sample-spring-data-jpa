@@ -57,6 +57,28 @@
 					</td>
 				</tr>
 				<tr>
+					<td>
+						<label for="firstName">First Name</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{firstName}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="fieldError">Invalid First Name</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="lastName">Last Name</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{lastName}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="fieldError">Invalid Last Name</p>
+					</td>
+				</tr>
+				<tr>
 					<td colspan="3">
 						<input type="submit" value="Submit" />
 					</td>

@@ -23,6 +23,14 @@ public class UserForm {
 	@Pattern(regexp = "^.+@.+\\..+$")
 	private String email;
 
+	@NotBlank
+	@Size(min = 1, max = 20)
+	private String firstName;
+
+	@NotBlank
+	@Size(min = 1, max = 20)
+	private String lastName;
+
 	public String getUsername() {
 		return username;
 	}
@@ -55,9 +63,26 @@ public class UserForm {
 		this.email = email;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("UserForm [username=%s, password=%s, confirmPassword=%s, email=%s]", username, password, confirmPassword, email);
+		return String.format("UserForm [username=%s, password=%s, confirmPassword=%s, email=%s, firstName=%s, lastName=%s]", username, password, confirmPassword, email, firstName,
+				lastName);
 	}
 
 }

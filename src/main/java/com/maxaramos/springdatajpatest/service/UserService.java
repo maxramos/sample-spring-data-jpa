@@ -1,5 +1,7 @@
 package com.maxaramos.springdatajpatest.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.slf4j.Logger;
@@ -43,16 +45,22 @@ public class UserService implements UserDetailsService {
 		return user;
 	}
 
+	public List<User> findAll() {
+		return userDao.findAll();
+	}
+
 	public User findByUsername(String username) {
-		return userDao.findByUsername(username);
+		return userDao.findByUsername(username).orElse(null);
 	}
 
 	public void save(UserForm userForm) {
-		Authority authority = authorityDao.findByAuthority("ROLE_USER");
+		Authority authority = authorityDao.findByAuthority("ROLE_USER").orElse(null);
 		User user = new User(userForm.getUsername());
 		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
 		user.addAuthority(authority);
 		user.setEmail(userForm.getEmail());
+		user.setFirstName(userForm.getFirstName());
+		user.setLastName(userForm.getLastName());
 		userDao.save(user);
 	}
 

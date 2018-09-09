@@ -23,7 +23,8 @@ public class AdminController {
 	}
 
 	@GetMapping("/admin/users")
-	public String users(Model model, Authentication authentication) {
+	public String users(Model model) {
+		model.addAttribute("users", userService.findAll());
 		return "/admin/users";
 	}
 

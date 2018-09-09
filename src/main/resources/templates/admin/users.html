@@ -18,6 +18,24 @@
 		</span>
 	</nav>
 	<div>
+		<table border="1">
+			<tr>
+				<th>Username</th>
+				<th>Password</th>
+				<th>Role</th>
+				<th>Email</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+			</tr>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.username}">username</td>
+				<td th:text="${user.password}">password</td>
+				<td th:text="${user.role}">role</td>
+				<td th:text="${user.email}">email</td>
+				<td th:text="${user.firstName}">first name</td>
+				<td th:text="${user.lastName}">last name</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 package com.maxaramos.springdatajpatest.model;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -45,6 +46,12 @@ public class User implements UserDetails {
 	@Column(name = "email")
 	private String email;
 
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+
 	public User() {
 		super();
 	}
@@ -82,8 +89,9 @@ public class User implements UserDetails {
 		return authorities;
 	}
 
-	public Authority getRole() {
-		return authorities.stream().findAny().orElse(null);
+	public String getRole() {
+		Optional<Authority> authority = authorities.stream().findAny();
+		return authority.isPresent() ? authority.get().getAuthority() : null;
 	}
 
 	@Override
@@ -114,9 +122,26 @@ public class User implements UserDetails {
 		this.email = email;
 	}
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("User [id=%s, username=%s, password=%s, authorities=%s, enabled=%s, email=%s]", id, username, password, authorities, enabled, email);
+		return String.format("User [id=%s, username=%s, password=%s, authorities=%s, enabled=%s, email=%s, firstName=%s, lastName=%s]", id, username, password, authorities,
+				enabled, email, firstName, lastName);
 	}
 
 }

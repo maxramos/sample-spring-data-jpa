@@ -21,13 +21,13 @@
 	</div>
 	<h1>Home</h1>
 	<nav>
-		<span sec:authorize-url="/admin/profile">
+		<span sec:authorize="hasRole('ROLE_ADMIN')">
 			<a href="/admin/profile" th:href="@{/admin/profile}">Profile</a>
 		</span>
-		<span sec:authorize-url="/admin/users">
+		<span sec:authorize="hasRole('ROLE_ADMIN')">
 			<a href="/admin/users" th:href="@{/admin/users}">Users</a>
 		</span>
-		<span sec:authorize-url="/user/profile">
+		<span sec:authorize="hasRole('ROLE_USER')">
 			<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
 		</span>
 	</nav>
