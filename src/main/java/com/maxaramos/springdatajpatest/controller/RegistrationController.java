@@ -5,9 +5,9 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,7 +25,8 @@ public class RegistrationController {
 	private UserService userService;
 
 	@GetMapping("/form")
-	public String form() {
+	public String form(Model model) {
+		model.addAttribute("userForm", new UserForm());
 		return "/registration/form";
 	}
 
@@ -36,7 +37,7 @@ public class RegistrationController {
 			return "/registration/form";
 		}
 
-		userService.save(userForm);
+		userService.register(userForm);
 		log.debug("Saved user: {}", userForm);
 		return "redirect:/registration/success";
 	}
@@ -44,11 +45,6 @@ public class RegistrationController {
 	@GetMapping("/success")
 	public String success() {
 		return "/registration/success";
-	}
-
-	@ModelAttribute
-	public UserForm getUserForm() {
-		return new UserForm();
 	}
 
 }

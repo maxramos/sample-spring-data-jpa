@@ -25,7 +25,7 @@ public class LoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 	protected void handle(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
 		HttpSession session = request.getSession();
 		User user = userService.findByUsername(authentication.getName());
-		session.setAttribute("loggedInUser", user);
+		session.setAttribute(User.LOGGED_IN_USER_ATTR, user);
 		super.handle(request, response, authentication);
 	}
 

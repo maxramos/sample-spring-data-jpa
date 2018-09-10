@@ -1,6 +1,7 @@
 package com.maxaramos.springdatajpatest.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -35,12 +36,7 @@ public class UserService implements UserDetailsService {
 
 	@Override
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = findByUsername(username);
-
-		if (user == null) {
-			throw new UsernameNotFoundException("Username: " + username);
-		}
-
+		User user = userDao.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username: " + username));
 		log.debug(user.toString());
 		return user;
 	}
@@ -53,7 +49,7 @@ public class UserService implements UserDetailsService {
 		return userDao.findByUsername(username).orElse(null);
 	}
 
-	public User save(UserForm userForm) {
+	public User register(UserForm userForm) {
 		Authority authority = authorityDao.findByAuthority("ROLE_USER").orElse(null);
 		User user = new User(userForm.getUsername());
 		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
@@ -61,6 +57,33 @@ public class UserService implements UserDetailsService {
 		user.setEmail(userForm.getEmail());
 		user.setFirstName(userForm.getFirstName());
 		user.setLastName(userForm.getLastName());
+		return userDao.save(user);
+	}
+
+	public User save(Long id, UserForm userForm) {
+		Optional<User> result = userDao.findById(id);
+
+		if (!result.isPresent()) {
+			throw new UserNotFoundException();
+		}
+
+		User user = result.get();
+		user.setUsername(userForm.getUsername());
+		user.setEmail(userForm.getEmail());
+		user.setFirstName(userForm.getFirstName());
+		user.setLastName(userForm.getLastName());
+		return userDao.save(user);
+	}
+
+	public User changePassword(Long id, UserForm userForm) {
+		Optional<User> result = userDao.findById(id);
+
+		if (!result.isPresent()) {
+			throw new UserNotFoundException();
+		}
+
+		User user = result.get();
+		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
 		return userDao.save(user);
 	}
 

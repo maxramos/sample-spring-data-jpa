@@ -14,6 +14,8 @@ public interface UserDao {
 
 	List<User> findAll();
 
+	Optional<User> findById(Long id);
+
 	Optional<User> findByUsername(String username);
 
 	User save(User user);

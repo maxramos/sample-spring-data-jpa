@@ -17,26 +17,67 @@
 	<br />
 	<div>
 		<span style="font-weight: bold">Credentials:</span>
-		<ul th:object="${session.loggedInUser}">
-			<li>
-				<span th:text="*{username}">username</span>
-			</li>
-			<li>
-				<span th:text="*{password}">password</span>
-			</li>
-			<li>
-				<span th:text="*{role}">role</span>
-			</li>
-			<li>
-				<span th:text="*{email}">email</span>
-			</li>
-			<li>
-				<span th:text="*{firstName}">first name</span>
-			</li>
-			<li>
-				<span th:text="*{lastName}">last name</span>
-			</li>
-		</ul>
+		<form th:action="@{/user/save}" th:object="${userForm}" method="post">
+			<table>
+				<tr>
+					<td>
+						<label for="username">Username</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{username}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="fieldError">Invalid Username</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label>Password</label>
+					</td>
+					<td>
+						<a href="/user/changePassword" th:href="@{/user/changePassword}">Change Password</a>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="email">Email</label>
+					</td>
+					<td>
+						<input type="email" th:field="*{email}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Invalid Email</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="firstName">First Name</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{firstName}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="fieldError">Invalid First Name</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="lastName">Last Name</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{lastName}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="fieldError">Invalid Last Name</p>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						<input type="submit" value="Save" />
+					</td>
+				</tr>
+			</table>
+		</form>
 	</div>
 </body>
 </html>

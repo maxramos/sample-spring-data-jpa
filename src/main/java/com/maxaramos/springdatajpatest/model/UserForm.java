@@ -1,35 +1,51 @@
 package com.maxaramos.springdatajpatest.model;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 
 public class UserForm {
 
-	@NotBlank
-	@Size(min = 1, max = 20)
+	public interface SaveConstraintGroup {}
+
+	public interface ChangePasswordConstraintGroup {}
+
+	@NotBlank(groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
 	private String username;
 
-	@NotBlank
-	@Size(min = 4, max = 16)
+	@NotBlank(groups = { Default.class, ChangePasswordConstraintGroup.class })
+	@Size(min = 4, max = 16, groups = { Default.class, ChangePasswordConstraintGroup.class })
 	private String password;
 
-	@NotBlank
-	@Size(min = 4, max = 16)
+	@NotBlank(groups = { Default.class, ChangePasswordConstraintGroup.class })
+	@Size(min = 4, max = 16, groups = { Default.class, ChangePasswordConstraintGroup.class })
 	private String confirmPassword;
 
-	@NotBlank
-	@Size(min = 5, max = 30)
-	@Pattern(regexp = "^.+@.+\\..+$")
+	@NotBlank(groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 5, max = 30, groups = { Default.class, SaveConstraintGroup.class })
+	@Email(groups = { Default.class, SaveConstraintGroup.class })
 	private String email;
 
-	@NotBlank
-	@Size(min = 1, max = 20)
+	@NotBlank(groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
 	private String firstName;
 
-	@NotBlank
-	@Size(min = 1, max = 20)
+	@NotBlank(groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
 	private String lastName;
+
+	public static UserForm fromUser(User user) {
+		UserForm userForm = new UserForm();
+		userForm.username = user.getUsername();
+		userForm.password = user.getPassword();
+		userForm.confirmPassword = user.getPassword();
+		userForm.email = user.getEmail();
+		userForm.firstName = user.getFirstName();
+		userForm.lastName = user.getLastName();
+		return userForm;
+	}
 
 	public String getUsername() {
 		return username;
