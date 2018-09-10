@@ -91,7 +91,13 @@ public class User implements UserDetails {
 
 	public String getRole() {
 		Optional<Authority> authority = authorities.stream().findAny();
-		return authority.isPresent() ? authority.get().getAuthority() : null;
+		String role = null;
+
+		if (authority.isPresent()) {
+			role = authority.get().getAuthority().split("_")[1].toLowerCase();
+		}
+
+		return role;
 	}
 
 	@Override

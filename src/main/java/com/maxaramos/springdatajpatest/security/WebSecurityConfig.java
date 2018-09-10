@@ -1,5 +1,6 @@
 package com.maxaramos.springdatajpatest.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -38,6 +39,9 @@ public class WebSecurityConfig {
 	@Configuration
 	public static class UiSecurityConfig extends WebSecurityConfigurerAdapter {
 
+		@Autowired
+		private LoginSuccessHandler loginSuccessHandler;
+
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
 			http
@@ -48,6 +52,7 @@ public class WebSecurityConfig {
 					.and()
 				.formLogin()
 					.loginPage("/login")
+					.successHandler(loginSuccessHandler)
 					.and()
 				.headers()
 					.frameOptions().sameOrigin()

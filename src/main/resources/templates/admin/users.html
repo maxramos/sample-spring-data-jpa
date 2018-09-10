@@ -7,16 +7,9 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-	<div th:replace="index::logout"></div>
+	<div th:replace="commons/navigation :: logout"></div>
 	<h1>Users</h1>
-	<nav>
-		<span>
-			<a href="/" th:href="@{/}">Home</a>
-		</span>
-		<span sec:authorize-url="/admin/profile">
-			<a href="/admin/profile" th:href="@{/admin/profile}">Profile</a>
-		</span>
-	</nav>
+	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
 	<div>
 		<table border="1">
 			<tr>

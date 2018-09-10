@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<body>
+	<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+		<div style="float: left">
+			<span style="font-weight: bold">User: </span>
+			<span sec:authentication="name"></span>
+		</div>
+		<div style="float: none">&nbsp;</div>
+		<div style="float: right">
+			<form action="#" th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" />
+			</form>
+		</div>
+	</div>
+
+	<nav th:fragment="admin">
+		<a href="/" th:href="@{/}">Home</a>
+		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
+		<a href="/admin/users" th:href="@{/admin/users}">Users</a>
+	</nav>
+	
+	<nav th:fragment="user">
+		<a href="/" th:href="@{/}">Home</a>
+		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
+	</nav>
+</body>
+</html>

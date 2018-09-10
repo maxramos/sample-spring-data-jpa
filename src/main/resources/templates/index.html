@@ -7,30 +7,9 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-	<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
-		<div style="float: left">
-			<span style="font-weight: bold">User: </span>
-			<span sec:authentication="name"></span>
-		</div>
-		<div style="float: none">&nbsp;</div>
-		<div style="float: right">
-			<form action="#" th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" />
-			</form>
-		</div>
-	</div>
+	<div th:replace="commons/navigation :: logout"></div>
 	<h1>Home</h1>
-	<nav>
-		<span sec:authorize="hasRole('ROLE_ADMIN')">
-			<a href="/admin/profile" th:href="@{/admin/profile}">Profile</a>
-		</span>
-		<span sec:authorize="hasRole('ROLE_ADMIN')">
-			<a href="/admin/users" th:href="@{/admin/users}">Users</a>
-		</span>
-		<span sec:authorize="hasRole('ROLE_USER')">
-			<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		</span>
-	</nav>
+	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
 	<div>
 		<span>You are successfully logged in </span>
 		<span style="font-weight: bold" sec:authentication="name"></span>
