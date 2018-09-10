@@ -15,7 +15,7 @@ import com.maxaramos.springdatajpatest.model.UserForm;
 import com.maxaramos.springdatajpatest.service.UserService;
 
 @Controller
-@RequestMapping("/register")
+@RequestMapping("/registration")
 public class RegistrationController {
 
 	@Autowired
@@ -24,26 +24,26 @@ public class RegistrationController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping
+	@GetMapping("/form")
 	public String form() {
-		return "/register/form";
+		return "/registration/form";
 	}
 
-	@PostMapping
-	public String submit(@Valid UserForm userForm, BindingResult bindingResult) {
+	@PostMapping("/register")
+	public String register(@Valid UserForm userForm, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			log.debug("Invalid user: {}", userForm);
-			return "/register/form";
+			return "/registration/form";
 		}
 
 		userService.save(userForm);
 		log.debug("Saved user: {}", userForm);
-		return "redirect:/register/success";
+		return "redirect:/registration/success";
 	}
 
 	@GetMapping("/success")
 	public String success() {
-		return "/register/success";
+		return "/registration/success";
 	}
 
 	@ModelAttribute

@@ -10,15 +10,10 @@ import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.service.UserService;
 
 @Controller
-public class MainController {
+public class UserController {
 
 	@Autowired
 	private UserService userService;
-
-	@GetMapping("/")
-	public String index(Model model, Authentication authentication) {
-		return "/index";
-	}
 
 	@GetMapping("/user/profile")
 	public String profile(Model model, Authentication authentication) {
