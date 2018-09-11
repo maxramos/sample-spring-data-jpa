@@ -1,11 +1,15 @@
 package com.maxaramos.springdatajpatest.model;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -53,6 +58,20 @@ public class User implements UserDetails {
 
 	@Column(name = "last_name")
 	private String lastName;
+
+	@Column(name = "age")
+	private Integer age;
+
+	@Column(name = "birthday")
+	private LocalDate birthday;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "gender")
+	private GenderType gender;
+
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "address_id")
+	private Address address;
 
 	public User() {
 		super();
@@ -150,10 +169,42 @@ public class User implements UserDetails {
 		this.lastName = lastName;
 	}
 
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public LocalDate getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(LocalDate birthday) {
+		this.birthday = birthday;
+	}
+
+	public GenderType getGender() {
+		return gender;
+	}
+
+	public void setGender(GenderType gender) {
+		this.gender = gender;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
 	@Override
 	public String toString() {
-		return String.format("User [id=%s, username=%s, password=%s, authorities=%s, enabled=%s, email=%s, firstName=%s, lastName=%s]", id, username, password, authorities,
-				enabled, email, firstName, lastName);
+		return String.format("User [id=%s, username=%s, password=%s, authorities=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s, address=%s]",
+				id, username, password, authorities, enabled, email, firstName, lastName, age, birthday, gender, address);
 	}
 
 }
