@@ -36,7 +36,7 @@ public class Address {
 	@Column(name = "zip_code")
 	private String zipCode;
 
-	public String getFormattedString() {
+	public String getFormattedAddress() {
 		StringBuilder builder = new StringBuilder();
 		builder.append(address1).append("<br />");
 

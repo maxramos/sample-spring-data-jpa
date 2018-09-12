@@ -9,6 +9,9 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 public class UserForm {
 
 	public interface SaveConstraintGroup {}
@@ -38,6 +41,7 @@ public class UserForm {
 	private Integer age;
 
 	@Past(groups = { Default.class, SaveConstraintGroup.class })
+	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate birthday;
 
 	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
@@ -53,6 +57,9 @@ public class UserForm {
 		userForm.email = user.getEmail();
 		userForm.firstName = user.getFirstName();
 		userForm.lastName = user.getLastName();
+		userForm.age = user.getAge();
+		userForm.birthday = user.getBirthday();
+		userForm.gender = user.getGender();
 		userForm.address = AddressForm.fromAddress(user.getAddress());
 		return userForm;
 	}

@@ -34,10 +34,10 @@
 				<td th:text="${user.lastName}">last name</td>
 				<td th:text="${user.age}">age</td>
 				<td th:text="${user.birthday}">birthday</td>
-				<td th:text="${user.gender}">gender</td>
+				<td th:text="${{user.gender}}">gender</td>
 				<td>
 					<p>
-						[(${user.address.formattedString})]
+						[(${user.address.formattedAddress})]
 					</p>
 				</td>
 				<td>
