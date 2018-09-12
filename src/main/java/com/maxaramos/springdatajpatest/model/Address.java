@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.util.StringUtils;
+
 @Entity
 @Table(name = "addresses")
 public class Address {
@@ -31,8 +33,23 @@ public class Address {
 	@Column(name = "country")
 	private String country;
 
-	@Column(name = "zipCode")
+	@Column(name = "zip_code")
 	private String zipCode;
+
+	public String getFormattedString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(address1).append("<br />");
+
+		if (!StringUtils.isEmpty(address2)) {
+			builder.append(address1).append("<br />");
+		}
+
+		builder.append(city).append("<br />");
+		builder.append(state).append("<br />");
+		builder.append(country).append("<br />");
+		builder.append(zipCode);
+		return builder.toString();
+	}
 
 	public String getAddress1() {
 		return address1;

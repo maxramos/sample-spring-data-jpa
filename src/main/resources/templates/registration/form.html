@@ -11,6 +11,7 @@
 	<h1>Registration</h1>
 	<div>
 		<form th:action="@{/registration/register}" th:object="${userForm}" method="post">
+			<span style="font-weight: bold">Basic:</span>
 			<table>
 				<tr>
 					<td>
@@ -79,11 +80,111 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="3">
-						<input type="submit" value="Submit" />
+					<td>
+						<label for="age">Age</label>
+					</td>
+					<td>
+						<input type="number" th:field="*{age}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Invalid Age</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="birthday">Birthday</label>
+					</td>
+					<td>
+						<input type="date" th:field="*{birthday}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="fieldError">Invalid Birthday</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="gender">Gender</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{gender}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="fieldError">Invalid Gender</p>
 					</td>
 				</tr>
 			</table>
+			<span style="font-weight: bold">Address:</span>
+			<table>
+				<tr>
+					<td>
+						<label for="address.address1">Address 1</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.address1}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.address1')}" th:errors="*{address.address1}" class="fieldError">Invalid Address 1</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="address.address2">Address 2</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.address2}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.address2')}" th:errors="*{address.address2}" class="fieldError">Invalid Address 2</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="address.city">City</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.city}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" class="fieldError">Invalid City</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="address.state">State</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.state}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" class="fieldError">Invalid State</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="address.country">Country</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.country}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}" class="fieldError">Invalid Country</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label for="address.zipCode">Zip Code</label>
+					</td>
+					<td>
+						<input type="text" th:field="*{address.zipCode}" th:errorclass="fieldError" />
+					</td>
+					<td>
+						<p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" class="fieldError">Invalid Zip Code</p>
+					</td>
+				</tr>
+			</table>
+			<div>
+				<input type="submit" value="Submit" />
+			</div>
 		</form>
 	</div>
 	<div>

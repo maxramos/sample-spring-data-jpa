@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 
 import com.maxaramos.springdatajpatest.dao.AuthorityDao;
 import com.maxaramos.springdatajpatest.dao.UserDao;
-import com.maxaramos.springdatajpatest.model.Authority;
+import com.maxaramos.springdatajpatest.model.Address;
+import com.maxaramos.springdatajpatest.model.AddressForm;
 import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.model.UserForm;
 
@@ -50,13 +51,25 @@ public class UserService implements UserDetailsService {
 	}
 
 	public User register(UserForm userForm) {
-		Authority authority = authorityDao.findByAuthority("ROLE_USER").orElse(null);
+		AddressForm addressForm = userForm.getAddress();
+		Address address = new Address();
+		address.setAddress1(addressForm.getAddress1());
+		address.setAddress2(addressForm.getAddress2());
+		address.setCity(addressForm.getCity());
+		address.setState(addressForm.getState());
+		address.setCountry(addressForm.getCountry());
+		address.setZipCode(addressForm.getZipCode());
+
 		User user = new User(userForm.getUsername());
 		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
-		user.addAuthority(authority);
+		user.addAuthority(authorityDao.findByAuthority("ROLE_USER").orElse(null));
 		user.setEmail(userForm.getEmail());
 		user.setFirstName(userForm.getFirstName());
 		user.setLastName(userForm.getLastName());
+		user.setAge(userForm.getAge());
+		user.setBirthday(userForm.getBirthday());
+		user.setGender(userForm.getGender());
+		user.setAddress(address);
 		return userDao.save(user);
 	}
 
@@ -72,6 +85,16 @@ public class UserService implements UserDetailsService {
 		user.setEmail(userForm.getEmail());
 		user.setFirstName(userForm.getFirstName());
 		user.setLastName(userForm.getLastName());
+
+		AddressForm addressForm = userForm.getAddress();
+		Address address = user.getAddress();
+		address.setAddress1(addressForm.getAddress1());
+		address.setAddress2(addressForm.getAddress2());
+		address.setCity(addressForm.getCity());
+		address.setState(addressForm.getState());
+		address.setCountry(addressForm.getCountry());
+		address.setZipCode(addressForm.getZipCode());
+
 		return userDao.save(user);
 	}
 
