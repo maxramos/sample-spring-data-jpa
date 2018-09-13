@@ -1,28 +1,29 @@
-package com.maxaramos.springdatajpatest.model;
+package com.maxaramos.springdatajpatest.dto;
 
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
-import com.maxaramos.springdatajpatest.model.UserForm.SaveConstraintGroup;
+import com.maxaramos.springdatajpatest.model.Address;
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 public class AddressForm {
 
-	@Size(min = 1, max = 100, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 100, groups = { Default.class, Save.class })
 	private String address1;
 
-	@Size(max = 100, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(max = 100, groups = { Default.class, Save.class })
 	private String address2;
 
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String city;
 
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String state;
 
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String country;
 
-	@Size(min = 1, max = 10, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 10, groups = { Default.class, Save.class })
 	private String zipCode;
 
 	public static AddressForm fromAddress(Address address) {

@@ -1,4 +1,4 @@
-package com.maxaramos.springdatajpatest.model;
+package com.maxaramos.springdatajpatest.dto;
 
 import java.time.LocalDate;
 
@@ -13,41 +13,42 @@ import javax.validation.groups.Default;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.maxaramos.springdatajpatest.model.GenderType;
+import com.maxaramos.springdatajpatest.model.User;
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.ChangePassword;
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
+
 public class UserForm {
 
-	public interface SaveConstraintGroup {}
-
-	public interface ChangePasswordConstraintGroup {}
-
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String username;
 
-	@Size(min = 4, max = 16, groups = { Default.class, ChangePasswordConstraintGroup.class })
+	@Size(min = 4, max = 16, groups = { Default.class, ChangePassword.class })
 	private String password;
 
-	@Size(min = 4, max = 16, groups = { Default.class, ChangePasswordConstraintGroup.class })
+	@Size(min = 4, max = 16, groups = { Default.class, ChangePassword.class })
 	private String confirmPassword;
 
-	@Size(min = 5, max = 30, groups = { Default.class, SaveConstraintGroup.class })
-	@Email(groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 5, max = 30, groups = { Default.class, Save.class })
+	@Email(groups = { Default.class, Save.class })
 	private String email;
 
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String firstName;
 
-	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String lastName;
 
-	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
-	@Positive(groups = { Default.class, SaveConstraintGroup.class })
+	@NotNull(groups = { Default.class, Save.class })
+	@Positive(groups = { Default.class, Save.class })
 	private Integer age;
 
-	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
-	@Past(groups = { Default.class, SaveConstraintGroup.class })
+	@NotNull(groups = { Default.class, Save.class })
+	@Past(groups = { Default.class, Save.class })
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate birthday;
 
-	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
+	@NotNull(groups = { Default.class, Save.class })
 	private GenderType gender;
 
 	@Valid

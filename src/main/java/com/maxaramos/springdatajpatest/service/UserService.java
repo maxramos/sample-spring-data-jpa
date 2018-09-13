@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
 
 import com.maxaramos.springdatajpatest.dao.AuthorityDao;
 import com.maxaramos.springdatajpatest.dao.UserDao;
+import com.maxaramos.springdatajpatest.dto.AddressForm;
+import com.maxaramos.springdatajpatest.dto.UserForm;
 import com.maxaramos.springdatajpatest.model.Address;
-import com.maxaramos.springdatajpatest.model.AddressForm;
 import com.maxaramos.springdatajpatest.model.User;
-import com.maxaramos.springdatajpatest.model.UserForm;
 
 @Service
 @Transactional

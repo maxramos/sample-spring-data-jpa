@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.maxaramos.springdatajpatest.model.UserForm;
+import com.maxaramos.springdatajpatest.dto.UserForm;
 import com.maxaramos.springdatajpatest.service.UserService;
 
 @Controller

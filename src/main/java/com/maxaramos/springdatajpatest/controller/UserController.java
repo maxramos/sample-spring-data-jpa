@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.maxaramos.springdatajpatest.dto.UserForm;
 import com.maxaramos.springdatajpatest.model.User;
-import com.maxaramos.springdatajpatest.model.UserForm;
 import com.maxaramos.springdatajpatest.service.UserService;
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.ChangePassword;
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 @Controller
 @RequestMapping("/user")
@@ -40,7 +42,7 @@ public class UserController {
 
 	@PostMapping("/save")
 	public String save(UserForm userForm, HttpSession session) {
-		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, UserForm.SaveConstraintGroup.class);
+		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, Save.class);
 
 		if (!violations.isEmpty()) {
 			log.debug("Invalid user: {}", userForm);
@@ -62,7 +64,7 @@ public class UserController {
 
 	@PostMapping("/changePassword")
 	public String changePassword(UserForm userForm, HttpSession session) {
-		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, UserForm.ChangePasswordConstraintGroup.class);
+		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, ChangePassword.class);
 
 		if (!violations.isEmpty()) {
 			log.debug("Invalid user: {}", userForm);
