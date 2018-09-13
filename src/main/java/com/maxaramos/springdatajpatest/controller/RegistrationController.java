@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.maxaramos.springdatajpatest.model.GenderType;
 import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.service.UserService;
 
@@ -27,6 +28,7 @@ public class RegistrationController {
 	@GetMapping("/form")
 	public String form(Model model) {
 		model.addAttribute("user", new User());
+		model.addAttribute("genders", GenderType.values());
 		return "/registration/form";
 	}
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.maxaramos.springdatajpatest.model.GenderType;
 import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.service.UserService;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.ChangePassword;
@@ -36,6 +37,7 @@ public class UserController {
 	public String profile(Model model, HttpSession session) {
 		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
 		model.addAttribute("user", user);
+		model.addAttribute("genders", GenderType.values());
 		return "/user/profile";
 	}
 

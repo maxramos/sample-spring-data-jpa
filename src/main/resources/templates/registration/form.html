@@ -106,7 +106,9 @@
 						<label for="gender">Gender</label>
 					</td>
 					<td>
-						<input type="text" th:field="*{gender}" th:errorclass="fieldError" />
+						<select th:field="*{gender}" th:errorclass="fieldError">
+							<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
+						</select>
 					</td>
 					<td>
 						<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="fieldError">Invalid Gender</p>
