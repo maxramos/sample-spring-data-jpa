@@ -1,7 +1,9 @@
 package com.maxaramos.springdatajpatest.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -17,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -70,7 +74,7 @@ public class User implements UserDetails {
 	private Set<Authority> authorities = new HashSet<>();
 
 	@Column(name = "enabled")
-	private Boolean enabled = true;
+	private Boolean enabled = false;
 
 	@Column(name = "email")
 	@Size(min = 5, max = 30, groups = { Default.class, Save.class })
@@ -105,6 +109,13 @@ public class User implements UserDetails {
 	@JoinColumn(name = "address_id")
 	@Valid
 	private Address address = new Address();
+
+	@ManyToOne
+	@JoinColumn(name = "supervisor_id")
+	private User supervisor;
+
+	@OneToMany(mappedBy = "supervisor")
+	private List<User> supervisees = new ArrayList<>();
 
 	public User() {
 		super();
@@ -253,6 +264,18 @@ public class User implements UserDetails {
 		return String.format(
 				"User [id=%s, username=%s, password=%s, rawPassword=%s, confirmRawPassword=%s, authorities=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s, address=%s]",
 				id, username, password, rawPassword, confirmRawPassword, authorities, enabled, email, firstName, lastName, age, birthday, gender, address);
+	}
+
+	public User getSupervisor() {
+		return supervisor;
+	}
+
+	public void setSupervisor(User supervisor) {
+		this.supervisor = supervisor;
+	}
+
+	public List<User> getSupervisees() {
+		return supervisees;
 	}
 
 }

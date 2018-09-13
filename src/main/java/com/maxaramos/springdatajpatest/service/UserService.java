@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.maxaramos.springdatajpatest.dao.AuthorityDao;
 import com.maxaramos.springdatajpatest.dao.UserDao;
 import com.maxaramos.springdatajpatest.model.Address;
+import com.maxaramos.springdatajpatest.model.Authority;
 import com.maxaramos.springdatajpatest.model.User;
 
 @Service
@@ -50,7 +51,7 @@ public class UserService implements UserDetailsService {
 
 	public User register(User user) {
 		user.setPassword(passwordEncoder.encode(user.getRawPassword()));
-		user.addAuthority(authorityDao.findByAuthority("ROLE_USER").orElse(null));
+		user.addAuthority(authorityDao.findByAuthority(Authority.ROLE_EMPLOYEE).orElse(null));
 		return userDao.save(user);
 	}
 

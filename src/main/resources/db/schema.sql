@@ -1,15 +1,16 @@
 CREATE TABLE users (
 	id BIGINT PRIMARY KEY AUTO_INCREMENT,
 	username VARCHAR(20) NOT NULL UNIQUE,
-	password VARCHAR(60) NOT NULL DEFAULT '',
-	enabled BOOLEAN NOT NULL DEFAULT TRUE,
-	email VARCHAR(30) NOT NULL UNIQUE,
+	password VARCHAR(60) NOT NULL,
+	enabled BOOLEAN NOT NULL,
+	email VARCHAR(30) NOT NULL,
 	first_name VARCHAR(20) NOT NULL,
 	last_name VARCHAR(20) NOT NULL,
 	age INTEGER NOT NULL,
 	birthday DATE NOT NULL,
 	gender VARCHAR(6) NOT NULL,
-	address_id BIGINT
+	address_id BIGINT,
+	supervisor_id BIGINT
 );
 
 CREATE TABLE authorities (
