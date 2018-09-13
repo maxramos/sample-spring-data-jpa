@@ -169,6 +169,10 @@ public class User implements UserDetails {
 		this.lastName = lastName;
 	}
 
+	public String getFullName() {
+		return firstName + " " + lastName;
+	}
+
 	public Integer getAge() {
 		return age;
 	}

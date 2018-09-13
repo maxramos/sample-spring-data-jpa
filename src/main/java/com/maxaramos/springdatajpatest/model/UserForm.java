@@ -2,6 +2,7 @@ package com.maxaramos.springdatajpatest.model;
 
 import java.time.LocalDate;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -37,9 +38,11 @@ public class UserForm {
 	@Size(min = 1, max = 20, groups = { Default.class, SaveConstraintGroup.class })
 	private String lastName;
 
+	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
 	@Positive(groups = { Default.class, SaveConstraintGroup.class })
 	private Integer age;
 
+	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
 	@Past(groups = { Default.class, SaveConstraintGroup.class })
 	@DateTimeFormat(iso = ISO.DATE)
 	private LocalDate birthday;
@@ -47,6 +50,7 @@ public class UserForm {
 	@NotNull(groups = { Default.class, SaveConstraintGroup.class })
 	private GenderType gender;
 
+	@Valid
 	private AddressForm address = new AddressForm();
 
 	public static UserForm fromUser(User user) {

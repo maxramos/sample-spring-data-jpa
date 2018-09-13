@@ -5,15 +5,13 @@
 <head>
 	<title>Profile</title>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<div th:replace="commons/navigation :: logout"></div>
+	<div th:replace="commons/action :: logout"></div>
 	<h1>Profile</h1>
 	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
-	<div>
-		<span>You are successfully logged in </span>
-		<span style="font-weight: bold" sec:authentication="name"></span>
-	</div>
+	<div th:replace="commons/display :: fullName"></div>
 	<br />
 	<div>
 		<form th:action="@{/user/save}" th:object="${userForm}" method="post">

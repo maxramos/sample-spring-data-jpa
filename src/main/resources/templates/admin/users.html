@@ -7,18 +7,18 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-	<div th:replace="commons/navigation :: logout"></div>
+	<div th:replace="commons/action :: logout"></div>
 	<h1>Users</h1>
 	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
+	<div th:replace="commons/display :: fullName"></div>
+	<br />
 	<div>
 		<table border="1">
 			<tr>
 				<th>Username</th>
-				<th>Password</th>
 				<th>Role</th>
 				<th>Email</th>
-				<th>First Name</th>
-				<th>Last Name</th>
+				<th>Full Name</th>
 				<th>Age</th>
 				<th>Birthday</th>
 				<th>Gender</th>
@@ -27,11 +27,9 @@
 			</tr>
 			<tr th:each="user : ${users}">
 				<td th:text="${user.username}">username</td>
-				<td th:text="${user.password}">password</td>
 				<td th:text="${user.role}">role</td>
 				<td th:text="${user.email}">email</td>
-				<td th:text="${user.firstName}">first name</td>
-				<td th:text="${user.lastName}">last name</td>
+				<td th:text="${user.fullName}">full name</td>
 				<td th:text="${user.age}">age</td>
 				<td th:text="${user.birthday}">birthday</td>
 				<td th:text="${{user.gender}}">gender</td>

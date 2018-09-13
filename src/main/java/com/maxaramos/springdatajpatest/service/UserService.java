@@ -85,6 +85,9 @@ public class UserService implements UserDetailsService {
 		user.setEmail(userForm.getEmail());
 		user.setFirstName(userForm.getFirstName());
 		user.setLastName(userForm.getLastName());
+		user.setAge(userForm.getAge());
+		user.setBirthday(userForm.getBirthday());
+		user.setGender(userForm.getGender());
 
 		AddressForm addressForm = userForm.getAddress();
 		Address address = user.getAddress();

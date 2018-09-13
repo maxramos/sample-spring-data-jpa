@@ -7,12 +7,9 @@
 	<meta charset="utf-8" />
 </head>
 <body>
-	<div th:replace="commons/navigation :: logout"></div>
+	<div th:replace="commons/action :: logout"></div>
 	<h1>Home</h1>
 	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
-	<div>
-		<span>You are successfully logged in </span>
-		<span style="font-weight: bold" sec:authentication="name"></span>
-	</div>
+	<div th:replace="commons/display :: fullName"></div>
 </body>
 </html>
