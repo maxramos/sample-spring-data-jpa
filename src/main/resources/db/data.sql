@@ -11,5 +11,5 @@ INSERT INTO users_authorities(user_id, authority_id) VALUES(2, 2);
 
 INSERT INTO addresses(id, address1, city, state, country, zip_code)
 VALUES(1, 'Rada Regency, Rada St. Legazpi Village', 'Makati', 'Metro Manila', 'Philippines', '1229');
-INSERT INTO addresses(id, address1, city, state, country, zip_code)
-VALUES(2, 'Banahaw St. Calmar Homes, Brgy Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
+VALUES(2, 'Banahaw St. Calmar Homes', 'Brgy Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');

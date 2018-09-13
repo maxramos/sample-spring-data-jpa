@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.maxaramos.springdatajpatest.dto.UserForm;
+import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.service.UserService;
 
 @Controller
@@ -26,19 +26,19 @@ public class RegistrationController {
 
 	@GetMapping("/form")
 	public String form(Model model) {
-		model.addAttribute("userForm", new UserForm());
+		model.addAttribute("user", new User());
 		return "/registration/form";
 	}
 
 	@PostMapping("/register")
-	public String register(@Valid UserForm userForm, BindingResult bindingResult) {
+	public String register(@Valid User user, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
-			log.debug("Invalid user: {}", userForm);
+			log.debug("Invalid user: {}", user);
 			return "/registration/form";
 		}
 
-		userService.register(userForm);
-		log.debug("Saved user: {}", userForm);
+		User savedUser = userService.register(user);
+		log.debug("Saved user: {}", savedUser);
 		return "redirect:/registration/success";
 	}
 

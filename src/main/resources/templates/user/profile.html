@@ -14,7 +14,7 @@
 	<div th:replace="commons/display :: fullName"></div>
 	<br />
 	<div>
-		<form th:action="@{/user/save}" th:object="${userForm}" method="post">
+		<form th:action="@{/user/save}" th:object="${user}" method="post">
 			<span style="font-weight: bold">Basic:</span>
 			<table>
 				<tr>

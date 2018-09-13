@@ -14,8 +14,6 @@ import org.springframework.stereotype.Service;
 
 import com.maxaramos.springdatajpatest.dao.AuthorityDao;
 import com.maxaramos.springdatajpatest.dao.UserDao;
-import com.maxaramos.springdatajpatest.dto.AddressForm;
-import com.maxaramos.springdatajpatest.dto.UserForm;
 import com.maxaramos.springdatajpatest.model.Address;
 import com.maxaramos.springdatajpatest.model.User;
 
@@ -50,67 +48,50 @@ public class UserService implements UserDetailsService {
 		return userDao.findByUsername(username).orElse(null);
 	}
 
-	public User register(UserForm userForm) {
-		AddressForm addressForm = userForm.getAddress();
-		Address address = new Address();
-		address.setAddress1(addressForm.getAddress1());
-		address.setAddress2(addressForm.getAddress2());
-		address.setCity(addressForm.getCity());
-		address.setState(addressForm.getState());
-		address.setCountry(addressForm.getCountry());
-		address.setZipCode(addressForm.getZipCode());
-
-		User user = new User(userForm.getUsername());
-		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
+	public User register(User user) {
+		user.setPassword(passwordEncoder.encode(user.getRawPassword()));
 		user.addAuthority(authorityDao.findByAuthority("ROLE_USER").orElse(null));
-		user.setEmail(userForm.getEmail());
-		user.setFirstName(userForm.getFirstName());
-		user.setLastName(userForm.getLastName());
-		user.setAge(userForm.getAge());
-		user.setBirthday(userForm.getBirthday());
-		user.setGender(userForm.getGender());
-		user.setAddress(address);
 		return userDao.save(user);
 	}
 
-	public User save(Long id, UserForm userForm) {
+	public User save(Long id, User user) {
 		Optional<User> result = userDao.findById(id);
 
 		if (!result.isPresent()) {
 			throw new UserNotFoundException();
 		}
 
-		User user = result.get();
-		user.setUsername(userForm.getUsername());
-		user.setEmail(userForm.getEmail());
-		user.setFirstName(userForm.getFirstName());
-		user.setLastName(userForm.getLastName());
-		user.setAge(userForm.getAge());
-		user.setBirthday(userForm.getBirthday());
-		user.setGender(userForm.getGender());
+		User savedUser = result.get();
+		savedUser.setUsername(user.getUsername());
+		savedUser.setEmail(user.getEmail());
+		savedUser.setFirstName(user.getFirstName());
+		savedUser.setLastName(user.getLastName());
+		savedUser.setAge(user.getAge());
+		savedUser.setBirthday(user.getBirthday());
+		savedUser.setGender(user.getGender());
 
-		AddressForm addressForm = userForm.getAddress();
 		Address address = user.getAddress();
-		address.setAddress1(addressForm.getAddress1());
-		address.setAddress2(addressForm.getAddress2());
-		address.setCity(addressForm.getCity());
-		address.setState(addressForm.getState());
-		address.setCountry(addressForm.getCountry());
-		address.setZipCode(addressForm.getZipCode());
+		Address savedAddress = savedUser.getAddress();
+		savedAddress.setAddress1(address.getAddress1());
+		savedAddress.setAddress2(address.getAddress2());
+		savedAddress.setCity(address.getCity());
+		savedAddress.setState(address.getState());
+		savedAddress.setCountry(address.getCountry());
+		savedAddress.setZipCode(address.getZipCode());
 
-		return userDao.save(user);
+		return userDao.save(savedUser);
 	}
 
-	public User changePassword(Long id, UserForm userForm) {
+	public User changePassword(Long id, User user) {
 		Optional<User> result = userDao.findById(id);
 
 		if (!result.isPresent()) {
 			throw new UserNotFoundException();
 		}
 
-		User user = result.get();
-		user.setPassword(passwordEncoder.encode(userForm.getPassword()));
-		return userDao.save(user);
+		User savedUser = result.get();
+		savedUser.setPassword(passwordEncoder.encode(user.getRawPassword()));
+		return userDao.save(savedUser);
 	}
 
 	public void deleteById(Long id) {

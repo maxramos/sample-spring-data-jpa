@@ -10,7 +10,7 @@
 <body>
 	<h1>Registration</h1>
 	<div>
-		<form th:action="@{/registration/register}" th:object="${userForm}" method="post">
+		<form th:action="@{/registration/register}" th:object="${user}" method="post">
 			<span style="font-weight: bold">Basic:</span>
 			<table>
 				<tr>
@@ -26,24 +26,24 @@
 				</tr>
 				<tr>
 					<td>
-						<label for="password">Password</label>
+						<label for="rawPassword">Password</label>
 					</td>
 					<td>
-						<input type="password" th:field="*{password}" th:errorclass="fieldError" />
+						<input type="password" th:field="*{rawPassword}" th:errorclass="fieldError" />
 					</td>
 					<td>
-						<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="fieldError">Invalid Password</p>
+						<p th:if="${#fields.hasErrors('rawPassword')}" th:errors="*{rawPassword}" class="fieldError">Invalid Password</p>
 					</td>
 				</tr>
 				<tr>
 					<td>
-						<label for="confirmPassword">Confirm Password</label>
+						<label for="confirmRawPassword">Confirm Password</label>
 					</td>
 					<td>
-						<input type="password" th:field="*{confirmPassword}" th:errorclass="fieldError" />
+						<input type="password" th:field="*{confirmRawPassword}" th:errorclass="fieldError" />
 					</td>
 					<td>
-						<p th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="fieldError">Invalid Confirm Password</p>
+						<p th:if="${#fields.hasErrors('confirmRawPassword')}" th:errors="*{confirmRawPassword}" class="fieldError">Invalid Confirm Password</p>
 					</td>
 				</tr>
 				<tr>

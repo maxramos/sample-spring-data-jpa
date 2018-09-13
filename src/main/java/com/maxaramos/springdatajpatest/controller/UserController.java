@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.maxaramos.springdatajpatest.dto.UserForm;
 import com.maxaramos.springdatajpatest.model.User;
 import com.maxaramos.springdatajpatest.service.UserService;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.ChangePassword;
@@ -36,45 +35,45 @@ public class UserController {
 	@GetMapping("/profile")
 	public String profile(Model model, HttpSession session) {
 		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
-		model.addAttribute("userForm", UserForm.fromUser(user));
+		model.addAttribute("user", user);
 		return "/user/profile";
 	}
 
 	@PostMapping("/save")
-	public String save(UserForm userForm, HttpSession session) {
-		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, Save.class);
+	public String save(User user, HttpSession session) {
+		Set<ConstraintViolation<User>> violations = validator.validate(user, Save.class);
 
 		if (!violations.isEmpty()) {
-			log.debug("Invalid user: {}", userForm);
+			log.debug("Invalid user: {}", user);
 			return "/user/profile";
 		}
 
-		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
-		user = userService.save(user.getId(), userForm);
-		session.setAttribute(User.LOGGED_IN_USER_ATTR, user);
-		log.debug("Saved user: {}", UserForm.fromUser(user));
+		Long id = ((User) session.getAttribute(User.LOGGED_IN_USER_ATTR)).getId();
+		User updatedUser = userService.save(id, user);
+		session.setAttribute(User.LOGGED_IN_USER_ATTR, updatedUser);
+		log.debug("Saved user: {}", updatedUser);
 		return "redirect:/user/profile";
 	}
 
 	@GetMapping("/changePassword")
 	public String changePasswordForm(Model model) {
-		model.addAttribute("userForm", new UserForm());
+		model.addAttribute("user", new User());
 		return "/user/changePassword";
 	}
 
 	@PostMapping("/changePassword")
-	public String changePassword(UserForm userForm, HttpSession session) {
-		Set<ConstraintViolation<UserForm>> violations = validator.validate(userForm, ChangePassword.class);
+	public String changePassword(User user, HttpSession session) {
+		Set<ConstraintViolation<User>> violations = validator.validate(user, ChangePassword.class);
 
 		if (!violations.isEmpty()) {
-			log.debug("Invalid user: {}", userForm);
+			log.debug("Invalid user: {}", user);
 			return "/user/profile";
 		}
 
-		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
-		user = userService.changePassword(user.getId(), userForm);
-		session.setAttribute(User.LOGGED_IN_USER_ATTR, user);
-		log.debug("Saved user: {}", UserForm.fromUser(user));
+		Long id = ((User) session.getAttribute(User.LOGGED_IN_USER_ATTR)).getId();
+		User updatedUser = userService.changePassword(id, user);
+		session.setAttribute(User.LOGGED_IN_USER_ATTR, updatedUser);
+		log.debug("Saved user: {}", updatedUser);
 		return "redirect:/user/profile";
 	}
 

@@ -6,8 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+import javax.validation.groups.Default;
 
 import org.springframework.util.StringUtils;
+
+import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 @Entity
 @Table(name = "addresses")
@@ -19,21 +23,27 @@ public class Address {
 	private Long id;
 
 	@Column(name = "address1")
+	@Size(min = 1, max = 100, groups = { Default.class, Save.class })
 	private String address1;
 
 	@Column(name = "address2")
+	@Size(min = 1, max = 100, groups = { Default.class, Save.class })
 	private String address2;
 
 	@Column(name = "city")
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String city;
 
 	@Column(name = "state")
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String state;
 
 	@Column(name = "country")
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
 	private String country;
 
 	@Column(name = "zip_code")
+	@Size(min = 1, max = 10, groups = { Default.class, Save.class })
 	private String zipCode;
 
 	public String getFormattedAddress() {
@@ -41,7 +51,7 @@ public class Address {
 		builder.append(address1).append("<br />");
 
 		if (!StringUtils.isEmpty(address2)) {
-			builder.append(address1).append("<br />");
+			builder.append(address2).append("<br />");
 		}
 
 		builder.append(city).append("<br />");
