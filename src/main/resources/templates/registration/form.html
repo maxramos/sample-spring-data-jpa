@@ -8,7 +8,11 @@
 	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
+	<div th:replace="commons/action :: logout"></div>
 	<h1>Registration</h1>
+	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
+	<div th:replace="commons/display :: fullName"></div>
+	<br />
 	<div>
 		<form th:action="@{/registration/register}" th:object="${user}" method="post">
 			<span style="font-weight: bold">Basic:</span>

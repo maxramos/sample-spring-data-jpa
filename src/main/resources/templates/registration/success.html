@@ -7,12 +7,16 @@
 	<meta charset="utf-8" />
 </head>
 <body>
+	<div th:replace="commons/action :: logout"></div>
 	<h1>Registration</h1>
+	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
+	<div th:replace="commons/display :: fullName"></div>
+	<br />
 	<div>
 		<h3>Success</h3>
 	</div>
 	<div>
-		<a href="/" th:href="@{/}">Login</a>
+		<a href="/" th:href="@{/}">Home</a>
 	</div>
 </body>
 </html>
