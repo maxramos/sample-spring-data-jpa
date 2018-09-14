@@ -26,9 +26,7 @@ public class TeamService {
 			for (User departmentHead : savedSupervisor.getSupervisees()) {
 				teams.addAll(userDao.findAllBySupervisor(departmentHead));
 			}
-		}
-
-		if ("depthead".equals(savedSupervisor.getRole())) {
+		} else if ("depthead".equals(savedSupervisor.getRole())) {
 			teams.addAll(userDao.findAllBySupervisor(supervisor));
 		}
 

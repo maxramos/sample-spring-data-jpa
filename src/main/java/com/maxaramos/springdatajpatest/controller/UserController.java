@@ -34,8 +34,9 @@ public class UserController {
 	private UserService userService;
 
 	@GetMapping("/list")
-	public String list(Model model) {
-		model.addAttribute("users", userService.findAll());
+	public String list(Model model, HttpSession session) {
+		User supervisor = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
+		model.addAttribute("users", userService.findAllBySupervisor(supervisor));
 		return "/user/list";
 	}
 

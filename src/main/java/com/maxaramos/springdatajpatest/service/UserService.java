@@ -1,5 +1,6 @@
 package com.maxaramos.springdatajpatest.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -42,6 +43,27 @@ public class UserService implements UserDetailsService {
 
 	public List<User> findAll() {
 		return userDao.findAll();
+	}
+
+	public List<User> findAllBySupervisor(User supervisor) {
+		User savedSupervisor = userDao.findById(supervisor.getId()).orElseThrow(() -> new UserNotFoundException("Id: " + supervisor.getId()));
+		List<User> users = new ArrayList<>();
+
+		if ("admin".equals(savedSupervisor.getRole())) {
+			users.addAll(userDao.findAll());
+		}else if ("depthead".equals(savedSupervisor.getRole())) {
+			users.add(savedSupervisor);
+
+			for (User teamSupervisor : savedSupervisor.getSupervisees()) {
+				users.add(teamSupervisor);
+				users.addAll(teamSupervisor.getSupervisees());
+			}
+		} else if ("supervisor".equals(savedSupervisor.getRole())) {
+			users.add(savedSupervisor);
+			users.addAll(savedSupervisor.getSupervisees());
+		}
+
+		return users;
 	}
 
 	public User findByUsername(String username) {
