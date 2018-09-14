@@ -14,6 +14,8 @@ public interface UserDao {
 
 	List<User> findAll();
 
+	List<User> findAllBySupervisor(User supervisor);
+
 	Optional<User> findById(Long id);
 
 	Optional<User> findByUsername(String username);
