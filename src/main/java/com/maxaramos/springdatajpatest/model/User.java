@@ -117,6 +117,10 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "supervisor")
 	private List<User> supervisees = new ArrayList<>();
 
+	@ManyToOne
+	@JoinColumn(name = "department_id")
+	private Department department;
+
 	public User() {
 		super();
 	}
@@ -259,13 +263,6 @@ public class User implements UserDetails {
 		this.address = address;
 	}
 
-	@Override
-	public String toString() {
-		return String.format(
-				"User [id=%s, username=%s, password=%s, rawPassword=%s, confirmRawPassword=%s, authorities=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s, address=%s]",
-				id, username, password, rawPassword, confirmRawPassword, authorities, enabled, email, firstName, lastName, age, birthday, gender, address);
-	}
-
 	public User getSupervisor() {
 		return supervisor;
 	}
@@ -276,6 +273,20 @@ public class User implements UserDetails {
 
 	public List<User> getSupervisees() {
 		return supervisees;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
+
+	@Override
+	public String toString() {
+		return String.format("User [id=%s, username=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s]", id, username, enabled, email, firstName,
+				lastName, age, birthday, gender);
 	}
 
 }
