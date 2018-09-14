@@ -46,7 +46,7 @@
 				<td th:text="${user.department?.name}">department</td>
 				<td>
 					<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
-						<input type="submit" value="Delete" />
+						<input type="submit" value="Delete" th:disabled="${user.role} == admin" />
 					</form>
 				</td>
 			</tr>

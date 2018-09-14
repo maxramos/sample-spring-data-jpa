@@ -9,19 +9,19 @@ VALUES(2, '#1 Alvarez St. Alvarez Subd.', 'Brgy. Del Carmen', 'Pagbilao', 'Quezo
 
 -- Dept#1 Team#1
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(3, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(3, '#11 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(4, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(4, '#111 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(5, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(5, '#112 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 
 -- Dept#1 Team#2
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(6, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(6, '#12 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(7, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(7, '#121 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(8, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(8, '#122 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 
 -- Dept#2
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
@@ -29,19 +29,19 @@ VALUES(9, '#2 Alvarez St. Alvarez Subd.', 'Brgy. Del Carmen', 'Pagbilao', 'Quezo
 
 -- Dept#2 Team#1
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(10, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(10, '#21 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(11, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(11, '#211 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(12, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(12, '#212 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 
 -- Dept#2 Team#2
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(13, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(13, '#22 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(14, '#1 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(14, '#221 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 INSERT INTO addresses(id, address1, address2, city, state, country, zip_code)
-VALUES(15, '#2 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
+VALUES(15, '#222 Banahaw St. Calmar Homes', 'Brgy. Kanlurang Mayao', 'Lucena', 'Quezon', 'Philippines', '4301');
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -63,43 +63,43 @@ VALUES(1, 'max.a.ramos', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJ
 
 -- Dept#1
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(2, 'therese.m.tan1', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan', 31, '1986-12-25', 'FEMALE', 2, 1, 1);
+VALUES(2, 'therese.m.tan1', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan1', 31, '1986-12-25', 'FEMALE', 2, 1, 1);
 
 -- Dept#1 - Team#1
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(3, 'paolo.a.ramos11', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos', 25, '1993-08-11', 'MALE', 3, 2, 1);
+VALUES(3, 'paolo.a.ramos11', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos11', 25, '1993-08-11', 'MALE', 3, 2, 1);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(4, 'zoilo.a.ramos111', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 4, 3, 1);
+VALUES(4, 'zoilo.a.ramos111', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos111', 23, '1995-06-27', 'MALE', 4, 3, 1);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(5, 'zoilo.a.ramos112', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 5, 3, 1);
+VALUES(5, 'zoilo.a.ramos112', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos112', 23, '1995-06-27', 'MALE', 5, 3, 1);
 
 -- Dept#1 - Team#2
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(6, 'paolo.a.ramos12', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos', 25, '1993-08-11', 'MALE', 6, 2, 1);
+VALUES(6, 'paolo.a.ramos12', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos12', 25, '1993-08-11', 'MALE', 6, 2, 1);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(7, 'zoilo.a.ramos121', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 7, 6, 1);
+VALUES(7, 'zoilo.a.ramos121', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos121', 23, '1995-06-27', 'MALE', 7, 6, 1);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(8, 'zoilo.a.ramos122', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 8, 6, 1);
+VALUES(8, 'zoilo.a.ramos122', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos122', 23, '1995-06-27', 'MALE', 8, 6, 1);
 
 -- Dept#2
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(9, 'therese.m.tan2', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan', 31, '1986-12-25', 'FEMALE', 9, 1, 2);
+VALUES(9, 'therese.m.tan2', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan2', 31, '1986-12-25', 'FEMALE', 9, 1, 2);
 
 -- Dept#2 - Team#1
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(10, 'paolo.a.ramos21', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos', 25, '1993-08-11', 'MALE', 10, 9, 2);
+VALUES(10, 'paolo.a.ramos21', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos21', 25, '1993-08-11', 'MALE', 10, 9, 2);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(11, 'zoilo.a.ramos211', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 11, 10, 2);
+VALUES(11, 'zoilo.a.ramos211', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos211', 23, '1995-06-27', 'MALE', 11, 10, 2);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(12, 'zoilo.a.ramos212', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 12, 10, 2);
+VALUES(12, 'zoilo.a.ramos212', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos212', 23, '1995-06-27', 'MALE', 12, 10, 2);
 
 -- Dept#2 - Team#2
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(13, 'paolo.a.ramos22', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos', 25, '1993-08-11', 'MALE', 13, 9, 2);
+VALUES(13, 'paolo.a.ramos22', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos22', 25, '1993-08-11', 'MALE', 13, 9, 2);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(14, 'zoilo.a.ramos221', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 14, 13, 2);
+VALUES(14, 'zoilo.a.ramos221', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos221', 23, '1995-06-27', 'MALE', 14, 13, 2);
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(15, 'zoilo.a.ramos222', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos', 23, '1995-06-27', 'MALE', 15, 13, 2);
+VALUES(15, 'zoilo.a.ramos222', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos222', 23, '1995-06-27', 'MALE', 15, 13, 2);
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
