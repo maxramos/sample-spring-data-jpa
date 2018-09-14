@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<title>Department List</title>
+	<meta charset="utf-8" />
+</head>
+<body>
+	<div th:replace="commons/action :: logout"></div>
+	<h1>Department List</h1>
+	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
+	<div th:replace="commons/display :: fullName"></div>
+	<br />
+	<div>
+		<table border="1">
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Head</th>
+				<th>Size</th>
+			</tr>
+			<tr th:each="department,status : ${departments}">
+				<td th:text="${status.count}">count</td>
+				<td th:text="${department.name}">name</td>
+				<td th:text="${department.head?.fullName}">head</td>
+				<td th:text="${#lists.size(department.members)}">size</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

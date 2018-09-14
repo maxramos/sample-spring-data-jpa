@@ -6,7 +6,9 @@
 	<nav th:fragment="admin">
 		<a href="/" th:href="@{/}">Home</a>
 		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a href="/admin/users" th:href="@{/admin/users}">Users</a>
+		<a href="/user/list" th:href="@{/user/list}">Users</a>
+		<a href="/team/list" th:href="@{/team/list}">Teams</a>
+		<a href="/department/list" th:href="@{/department/list}">Departments</a>
 		<a href="/registration/form" th:href="@{/registration/form}">Registration</a>
 	</nav>
 	
@@ -18,11 +20,14 @@
 	<nav th:fragment="supervisor">
 		<a href="/" th:href="@{/}">Home</a>
 		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
+		<a href="/user/list" th:href="@{/user/list}">Users</a>
 	</nav>
 	
 	<nav th:fragment="depthead">
 		<a href="/" th:href="@{/}">Home</a>
 		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
+		<a href="/user/list" th:href="@{/user/list}">Users</a>
+		<a href="/team/list" th:href="@{/team/list}">Teams</a>
 	</nav>
 </body>
 </html>

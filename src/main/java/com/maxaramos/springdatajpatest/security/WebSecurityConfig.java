@@ -47,7 +47,9 @@ public class WebSecurityConfig {
 			http
 				.authorizeRequests()
 					.antMatchers("/css/**", "/js/**", "/login").permitAll()
-					.antMatchers("/admin/**", "/registration/**").hasRole("ADMIN")
+					.antMatchers("/admin/**", "/registration/**", "/department/**").hasRole("ADMIN")
+					.antMatchers("/team/**").hasAnyRole("ADMIN", "DEPTHEAD")
+					.antMatchers("/user/list").hasAnyRole("ADMIN", "DEPTHEAD", "SUPERVISOR")
 					.anyRequest().authenticated()
 					.and()
 				.formLogin()

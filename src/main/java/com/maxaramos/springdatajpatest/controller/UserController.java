@@ -33,6 +33,12 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	@GetMapping("/list")
+	public String list(Model model) {
+		model.addAttribute("users", userService.findAll());
+		return "/user/list";
+	}
+
 	@GetMapping("/profile")
 	public String profile(Model model, HttpSession session) {
 		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);

@@ -1,5 +1,6 @@
 package com.maxaramos.springdatajpatest.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -37,7 +38,7 @@ public class Department {
 	private User head;
 
 	@OneToMany(mappedBy = "department")
-	private List<User> members;
+	private List<User> members = new ArrayList<>();
 
 	public String getName() {
 		return name;
