@@ -1,7 +1,6 @@
 package com.maxaramos.springdatajpatest.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -46,23 +45,17 @@ public class UserService implements UserDetailsService {
 	}
 
 	public User findByUsername(String username) {
-		return userDao.findByUsername(username).orElse(null);
+		return userDao.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username: " + username));
 	}
 
 	public User register(User user) {
 		user.setPassword(passwordEncoder.encode(user.getRawPassword()));
-		user.addAuthority(authorityDao.findByAuthority(Authority.ROLE_EMPLOYEE).orElse(null));
+		user.addAuthority(authorityDao.findByAuthority(Authority.ROLE_EMPLOYEE).orElseThrow(() -> new AuthorityNotFoundException("Authority: " + Authority.ROLE_EMPLOYEE)));
 		return userDao.save(user);
 	}
 
 	public User save(Long id, User user) {
-		Optional<User> result = userDao.findById(id);
-
-		if (!result.isPresent()) {
-			throw new UserNotFoundException();
-		}
-
-		User savedUser = result.get();
+		User savedUser = userDao.findById(id).orElseThrow(() -> new UserNotFoundException("Id: " + id));
 		savedUser.setUsername(user.getUsername());
 		savedUser.setEmail(user.getEmail());
 		savedUser.setFirstName(user.getFirstName());
@@ -84,19 +77,25 @@ public class UserService implements UserDetailsService {
 	}
 
 	public User changePassword(Long id, User user) {
-		Optional<User> result = userDao.findById(id);
-
-		if (!result.isPresent()) {
-			throw new UserNotFoundException();
-		}
-
-		User savedUser = result.get();
+		User savedUser = userDao.findById(id).orElseThrow(() -> new UserNotFoundException("Id: " + id));
 		savedUser.setPassword(passwordEncoder.encode(user.getRawPassword()));
 		return userDao.save(savedUser);
 	}
 
 	public void deleteById(Long id) {
 		userDao.deleteById(id);
+	}
+
+	public User enableById(Long id) {
+		User user = userDao.findById(id).orElseThrow(() -> new UserNotFoundException("Id: " + id));
+		user.setEnabled(true);
+		return userDao.save(user);
+	}
+
+	public User disableById(Long id) {
+		User user = userDao.findById(id).orElseThrow(() -> new UserNotFoundException("Id: " + id));
+		user.setEnabled(false);
+		return userDao.save(user);
 	}
 
 }

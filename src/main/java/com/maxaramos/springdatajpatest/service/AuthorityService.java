@@ -16,7 +16,7 @@ public class AuthorityService {
 	private AuthorityDao authorityDao;
 
 	public Authority findByAuthority(String authority) {
-		return authorityDao.findByAuthority(authority).orElse(null);
+		return authorityDao.findByAuthority(authority).orElseThrow(() -> new AuthorityNotFoundException("Authority: " + authority));
 	}
 
 }

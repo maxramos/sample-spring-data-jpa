@@ -53,7 +53,7 @@ public class UserController {
 		Long id = ((User) session.getAttribute(User.LOGGED_IN_USER_ATTR)).getId();
 		User updatedUser = userService.save(id, user);
 		session.setAttribute(User.LOGGED_IN_USER_ATTR, updatedUser);
-		log.debug("Saved user: {}", updatedUser);
+		log.debug("Updated user: {}", updatedUser);
 		return "redirect:/user/profile";
 	}
 
@@ -75,7 +75,7 @@ public class UserController {
 		Long id = ((User) session.getAttribute(User.LOGGED_IN_USER_ATTR)).getId();
 		User updatedUser = userService.changePassword(id, user);
 		session.setAttribute(User.LOGGED_IN_USER_ATTR, updatedUser);
-		log.debug("Saved user: {}", updatedUser);
+		log.debug("Updated user: {}", updatedUser);
 		return "redirect:/user/profile";
 	}
 

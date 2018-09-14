@@ -188,6 +188,10 @@ public class User implements UserDetails {
 		return enabled;
 	}
 
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		return true;
