@@ -46,12 +46,15 @@
 				<td th:text="${user.supervisor?.fullName}">supervisor</td>
 				<td th:text="${user.department?.name}">department</td>
 				<td>
-					<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
-						<input type="submit" value="Delete" th:disabled="${user.role} == admin" />
+					<form th:if="${not user.enabled}" th:action="@{/admin/user/enable(id=${user.id})}" method="post">
+						<input type="submit" value="Enable" />
+					</form>
+					<form th:if="${user.enabled}" th:action="@{/admin/user/disable(id=${user.id})}" method="post">
+						<input type="submit" value="Disable" />
 					</form>
 				</td>
 				<td>
-					<form th:action="@{/admin/user/enable(id=${user.id})}" method="post">
+					<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
 						<input type="submit" value="Delete" th:disabled="${user.role} == admin" />
 					</form>
 				</td>
