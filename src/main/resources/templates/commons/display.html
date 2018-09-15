@@ -3,9 +3,14 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
+	<div th:fragment="username" sec:authorize="isAuthenticated()">
+		<span>User: </span>
+		<span th:text="${session.loggedInUser.username}"></span>
+	</div>
+
 	<div th:fragment="fullName" sec:authorize="isAuthenticated()">
 		<span>Welcome </span>
-		<span style="font-weight: bold" th:text="${session.loggedInUser.fullName}"></span>
+		<span th:text="${session.loggedInUser.fullName}"></span>
 	</div>
 </body>
 </html>

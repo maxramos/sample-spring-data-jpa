@@ -4,30 +4,38 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
 	<nav th:fragment="admin">
-		<a href="/" th:href="@{/}">Home</a>
-		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a href="/user/list" th:href="@{/user/list}">Users</a>
-		<a href="/team/list" th:href="@{/team/list}">Teams</a>
-		<a href="/department/list" th:href="@{/department/list}">Departments</a>
-		<a href="/registration/form" th:href="@{/registration/form}">Registration</a>
+		<ul class="list-unstyled">
+			<li><a href="/" th:href="@{/}">Home</a></li>
+			<li><a href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+			<li><a href="/user/list" th:href="@{/user/list}">Users</a></li>
+			<li><a href="/team/list" th:href="@{/team/list}">Teams</a></li>
+			<li><a href="/department/list" th:href="@{/department/list}">Departments</a></li>
+			<li><a href="/registration/form" th:href="@{/registration/form}">Registration</a></li>
+		</ul>
 	</nav>
 	
 	<nav th:fragment="employee">
-		<a href="/" th:href="@{/}">Home</a>
-		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
+		<ul class="list-unstyled">
+			<li><a href="/" th:href="@{/}">Home</a></li>
+			<li><a href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+		</ul>
 	</nav>
 	
 	<nav th:fragment="supervisor">
-		<a href="/" th:href="@{/}">Home</a>
-		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a href="/user/list" th:href="@{/user/list}">Users</a>
+		<ul class="list-unstyled">
+			<li><a href="/" th:href="@{/}">Home</a></li>
+			<li><a href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+			<li><a href="/user/list" th:href="@{/user/list}">Users</a></li>
+		</ul>
 	</nav>
 	
 	<nav th:fragment="depthead">
-		<a href="/" th:href="@{/}">Home</a>
-		<a href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a href="/user/list" th:href="@{/user/list}">Users</a>
-		<a href="/team/list" th:href="@{/team/list}">Teams</a>
+		<ul class="list-unstyled">
+			<li><a href="/" th:href="@{/}">Home</a></li>
+			<li><a href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+			<li><a href="/user/list" th:href="@{/user/list}">Users</a></li>
+			<li><a href="/team/list" th:href="@{/team/list}">Teams</a></li>
+		</ul>
 	</nav>
 </body>
 </html>

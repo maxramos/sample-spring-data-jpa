@@ -45,15 +45,15 @@
 				<td th:text="${user.department?.name}">department</td>
 				<td>
 					<form th:if="${not user.enabled}" th:action="@{/admin/user/enable(id=${user.id})}" method="post">
-						<input type="submit" value="Enable" />
+						<input type="submit" value="Enable" th:disabled="${user.id == session.loggedInUser.id}" />
 					</form>
 					<form th:if="${user.enabled}" th:action="@{/admin/user/disable(id=${user.id})}" method="post">
-						<input type="submit" value="Disable" />
+						<input type="submit" value="Disable" th:disabled="${user.id == session.loggedInUser.id}" />
 					</form>
 				</td>
 				<td>
 					<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
-						<input type="submit" value="Delete" th:disabled="${user.role} == admin" />
+						<input type="submit" value="Delete" th:disabled="${user.id == session.loggedInUser.id}" />
 					</form>
 				</td>
 			</tr>

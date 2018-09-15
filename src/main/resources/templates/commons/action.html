@@ -3,17 +3,10 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
-	<div th:fragment="logout" style="float: right" sec:authorize="isAuthenticated()">
-		<div style="float: left">
-			<span style="font-weight: bold">User: </span>
-			<span th:text="${session.loggedInUser.username}"></span>
-		</div>
-		<div style="float: none">&nbsp;</div>
-		<div style="float: right">
-			<form action="#" th:action="@{/logout}" method="post">
-				<input type="submit" value="Logout" />
-			</form>
-		</div>
+	<div th:fragment="logout" sec:authorize="isAuthenticated()">
+		<form action="#" th:action="@{/logout}" method="post">
+			<input type="submit" value="Logout" />
+		</form>
 	</div>
 </body>
 </html>
