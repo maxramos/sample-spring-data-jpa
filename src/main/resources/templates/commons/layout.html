@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html th:fragment="base(title, header, content)" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+	<title th:replace="${title}">Title</title>
+	<link type="text/css" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.1.3/css/bootstrap.min.css}" rel="stylesheet" />
+	<link type="text/css" href="/css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+	<script type="text/javascript" src="/webjars/jquery/3.3.1-1/jquery.min.js" th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
+</head>
+<body>
+	<div th:replace="commons/action :: logout"></div>
+	<header th:replace="${header}"></header>
+	<nav sec:authorize="isAuthenticated()" th:include="commons/navigation :: ${session.loggedInUser.role}"></nav>
+	<section th:replace="${content}"></section>
+	<footer>&copy;2018 Max Ramos All Rights Reserved</footer>
+</body>
+</html>

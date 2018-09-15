@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<title>Registration</title>
-	<meta charset="utf-8" />
 </head>
 <body>
-	<div th:replace="commons/action :: logout"></div>
-	<h1>Registration</h1>
-	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
-	<div th:replace="commons/display :: fullName"></div>
-	<br />
-	<div>
-		<h3>Success</h3>
-	</div>
-	<div>
-		<a href="/" th:href="@{/}">Home</a>
-	</div>
+	<header>
+		<h1>Registration</h1>
+	</header>
+	<section>
+		<h5>Success</h5>
+	</section>
 </body>
 </html>

@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<title>Registration</title>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<div th:replace="commons/action :: logout"></div>
-	<h1>Registration</h1>
-	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
-	<div th:replace="commons/display :: fullName"></div>
-	<br />
-	<div>
+	<header>
+		<h1>Registration</h1>
+	</header>
+	<section>
 		<form th:action="@{/registration/register}" th:object="${user}" method="post">
-			<span style="font-weight: bold">Basic:</span>
+			<h5>Basic:</h5>
 			<table>
 				<tr>
 					<td>
@@ -119,7 +116,7 @@
 					</td>
 				</tr>
 			</table>
-			<span style="font-weight: bold">Address:</span>
+			<h5>Address:</h5>
 			<table>
 				<tr>
 					<td>
@@ -190,11 +187,9 @@
 			</table>
 			<div>
 				<input type="submit" value="Submit" />
+				<a href="/" th:href="@{/}">Cancel</a>
 			</div>
 		</form>
-	</div>
-	<div>
-		<a href="/" th:href="@{/}">Cancel</a>
-	</div>
+	</section>
 </body>
 </html>

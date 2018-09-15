@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<title>Profile</title>
-	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" media="all" href="/css/style.css" th:href="@{/css/style.css}" />
 </head>
 <body>
-	<div th:replace="commons/action :: logout"></div>
-	<h1>Profile</h1>
-	<nav th:replace="commons/navigation :: ${session.loggedInUser.role}"></nav>
-	<div th:replace="commons/display :: fullName"></div>
-	<br />
-	<div>
+	<header>
+		<h1>Profile</h1>
+	</header>
+	<section>
 		<form th:action="@{/user/save}" th:object="${user}" method="post">
-			<span style="font-weight: bold">Basic:</span>
+			<h5>Basic:</h5>
 			<table>
 				<tr>
 					<td>
@@ -105,7 +102,7 @@
 					</td>
 				</tr>
 			</table>
-			<span style="font-weight: bold">Address:</span>
+			<h5>Address:</h5>
 			<table>
 				<tr>
 					<td>
@@ -174,7 +171,7 @@
 					</td>
 				</tr>
 			</table>
-			<span style="font-weight: bold">Team:</span>
+			<h5>Team:</h5>
 			<table>
 				<tr>
 					<td>
@@ -185,7 +182,7 @@
 					</td>
 				</tr>
 			</table>
-			<span style="font-weight: bold">Department:</span>
+			<h5>Department:</h5>
 			<table>
 				<tr>
 					<td>
@@ -208,6 +205,6 @@
 				<input type="submit" value="Save" />
 			</div>
 		</form>
-	</div>
+	</section>
 </body>
 </html>

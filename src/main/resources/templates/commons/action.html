@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
-	<div style="float: right" th:fragment="logout" sec:authorize="isAuthenticated()">
+	<div th:fragment="logout" style="float: right" sec:authorize="isAuthenticated()">
 		<div style="float: left">
 			<span style="font-weight: bold">User: </span>
 			<span th:text="${session.loggedInUser.username}"></span>

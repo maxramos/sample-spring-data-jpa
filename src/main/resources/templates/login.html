@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
+<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 	<title>Login</title>
-	<meta charset="utf-8" />
 </head>
 <body>
-	<p th:if="${param.logout}">
-		You have been logged out.
-	</p>
-	<div>
-		<h3 style="margin-bottom: 0">Login</h3>
+	<header>
+		<h1>Login</h1>
+	</header>
+	<section>
+		<p th:if="${param.logout}">
+			You have been logged out.
+		</p>
 		<p th:if="${param.error}">
 			Invalid username or password.
 		</p>
@@ -40,9 +42,6 @@
 				</tr>
 			</table>
 		</form>
-	</div>
-	<div>
-		<a href="/registration/form" th:href="@{/registration/form}">Register</a>
-	</div>
+	</section>
 </body>
 </html>
