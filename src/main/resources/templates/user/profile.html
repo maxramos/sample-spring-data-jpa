@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+<html th:replace="commons/layout::base(~{::title}, ~{::section})"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
@@ -7,200 +7,95 @@
 	<title>Profile</title>
 </head>
 <body>
-	<header>
-		<h1>Profile</h1>
-	</header>
 	<section>
 		<form th:action="@{/user/save}" th:object="${user}" method="post">
 			<h5>Basic:</h5>
-			<table>
-				<tr>
-					<td>
-						<label for="username">Username</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{username}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="fieldError">Invalid Username</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Password</label>
-					</td>
-					<td>
-						<a href="/user/changePassword" th:href="@{/user/changePassword}">Change Password</a>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="email">Email</label>
-					</td>
-					<td>
-						<input type="email" th:field="*{email}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Invalid Email</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="firstName">First Name</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{firstName}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="fieldError">Invalid First Name</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="lastName">Last Name</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{lastName}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="fieldError">Invalid Last Name</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="age">Age</label>
-					</td>
-					<td>
-						<input type="number" th:field="*{age}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Invalid Age</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="birthday">Birthday</label>
-					</td>
-					<td>
-						<input type="date" th:field="*{birthday}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="fieldError">Invalid Birthday</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="gender">Gender</label>
-					</td>
-					<td>
-						<select th:field="*{gender}" th:errorclass="fieldError">
-							<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
-						</select>
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="fieldError">Invalid Gender</p>
-					</td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" class="form-control" th:field="*{username}" th:errorclass="fieldError" />
+				<p class="fieldError" th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Invalid Username</p>
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<a href="/user/changePassword" th:href="@{/user/changePassword}">Change Password</a>
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" class="form-control" th:field="*{email}" th:errorclass="fieldError" />
+				<p class="fieldError" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid Email</p>
+			</div>
+			<div class="form-group">
+				<label for="firstName">First Name</label>
+				<input type="text" class="form-control" th:field="*{firstName}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="fieldError">Invalid First Name</p>
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last Name</label>
+				<input type="text" class="form-control" th:field="*{lastName}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="fieldError">Invalid Last Name</p>
+			</div>
+			<div class="form-group">
+				<label for="age">Age</label>
+				<input type="number" class="form-control" th:field="*{age}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Invalid Age</p>
+			</div>
+			<div class="form-group">
+				<label for="birthday">Birthday</label>
+				<input type="date" class="form-control" th:field="*{birthday}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="fieldError">Invalid Birthday</p>
+			</div>
+			<div class="form-group">
+				<label for="gender">Gender</label>
+				<select  class="form-control" th:field="*{gender}" th:errorclass="fieldError">
+					<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
+				</select>
+				<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="fieldError">Invalid Gender</p>
+			</div>
 			<h5>Address:</h5>
-			<table>
-				<tr>
-					<td>
-						<label for="address.address1">Address 1</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.address1}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.address1')}" th:errors="*{address.address1}" class="fieldError">Invalid Address 1</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.address2">Address 2</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.address2}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.address2')}" th:errors="*{address.address2}" class="fieldError">Invalid Address 2</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.city">City</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.city}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" class="fieldError">Invalid City</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.state">State</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.state}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" class="fieldError">Invalid State</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.country">Country</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.country}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}" class="fieldError">Invalid Country</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.zipCode">Zip Code</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.zipCode}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" class="fieldError">Invalid Zip Code</p>
-					</td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label for="address.address1">Address 1</label>
+				<input type="text" class="form-control" th:field="*{address.address1}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.address1')}" th:errors="*{address.address1}" class="fieldError">Invalid Address 1</p>
+			</div>
+			<div class="form-group">
+				<label for="address.address2">Address 2</label>
+				<input type="text" class="form-control" th:field="*{address.address2}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.address2')}" th:errors="*{address.address2}" class="fieldError">Invalid Address 2</p>
+			</div>
+			<div class="form-group">
+				<label for="address.city">City</label>
+				<input type="text" class="form-control" th:field="*{address.city}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" class="fieldError">Invalid City</p>
+			</div>
+			<div class="form-group">
+				<label for="address.state">State</label>
+				<input type="text" class="form-control" th:field="*{address.state}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" class="fieldError">Invalid State</p>
+			</div>
+			<div class="form-group">
+				<label for="address.country">Country</label>
+				<input type="text" class="form-control" th:field="*{address.country}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}" class="fieldError">Invalid Country</p>
+			</div>
+			<div class="form-group">
+				<label for="address.zipCode">Zip Code</label>
+				<input type="text" class="form-control" th:field="*{address.zipCode}" th:errorclass="fieldError" />
+				<p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" class="fieldError">Invalid Zip Code</p>
+			</div>
 			<h5>Team:</h5>
-			<table>
-				<tr>
-					<td>
-						<label>Supervisor</label>
-					</td>
-					<td colspan="2">
-						<span th:text="*{supervisor?.fullName}"></span>
-					</td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label>Supervisor</label>
+				<span th:text="*{supervisor?.fullName}"></span>
+			</div>
 			<h5>Department:</h5>
-			<table>
-				<tr>
-					<td>
-						<label>Name</label>
-					</td>
-					<td colspan="2">
-						<span th:text="*{department?.name}"></span>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label>Head</label>
-					</td>
-					<td colspan="2">
-						<span th:text="*{department?.head?.fullName}"></span>
-					</td>
-				</tr>
-			</table>
+			<div class="form-group">
+				<label>Name</label>
+				<span th:text="*{department?.name}"></span>
+			</div>
+			<div class="form-group">
+				<label>Head</label>
+				<span th:text="*{department?.head?.fullName}"></span>
+			</div>
 			<div>
 				<input type="submit" value="Save" />
 			</div>

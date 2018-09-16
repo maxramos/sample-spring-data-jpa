@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:fragment="base(title, header, content)" 
+<html th:fragment="base(title, content)"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
@@ -12,18 +12,11 @@
 </head>
 <body>
 	<header class="header">	
-		<nav sec:authorize="isAuthenticated()" th:include="commons/navigation::${session.loggedInUser.role}"
-			class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-		</nav>
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" sec:authorize="isAuthenticated()" th:include="commons/navigation::${session.loggedInUser.role}"></nav>
 	</header>
 	<div class="container">
 		<section th:replace="${content}"></section>
 	</div>		
-	<footer class="footer">
-		<div class="container-fluid text-center">
-			<span>&copy;2018 Max Ramos All Rights Reserved</span>
-		</div>
-	</footer>
 	<script type="text/javascript" src="/webjars/jquery/3.3.1-1/jquery.min.js" th:src="@{/webjars/jquery/3.3.1-1/jquery.min.js}"></script>
 	<script type="text/javascript" src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.1.3/js/bootstrap.min.js}"></script>
 </body>
