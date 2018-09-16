@@ -72,7 +72,7 @@ public class UserController {
 	public String changePassword(@Validated(ChangePassword.class) User user, BindingResult bindingResult, HttpSession session) {
 		if (bindingResult.hasErrors()) {
 			log.debug("Invalid user: {}", user);
-			return "/user/profile";
+			return "/user/changePassword";
 		}
 
 		Long id = ((User) session.getAttribute(User.LOGGED_IN_USER_ATTR)).getId();

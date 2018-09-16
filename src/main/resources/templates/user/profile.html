@@ -20,7 +20,7 @@
 					<div class="form-group">
 						<label class="col-form-label">Password</label>
 						<div class="d-flex justify-content-between">
-							<input type="password" id="password" class="form-control" value="password" readonly />				
+							<input type="password" id="password" class="form-control" value="password-placeholder" readonly />				
 							<a href="/user/changePassword" th:href="@{/user/changePassword}">
 								<button type="button" class="btn">Change</button>
 							</a>
@@ -53,7 +53,7 @@
 					</div>
 					<div class="form-group">
 						<label for="gender" class="col-form-label">Gender</label>
-						<select  class="form-control" th:field="*{gender}" th:errorclass="is-invalid">
+						<select class="form-control" th:field="*{gender}" th:errorclass="is-invalid">
 							<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
 						</select>
 						<p class="invalid-tooltip" th:errors="*{gender}">Invalid Gender</p>
@@ -118,7 +118,6 @@
 					<input type="submit" class="btn btn-lg btn-primary" value="Save" />
 				</div>
 			</div>
-			
 		</form>
 	</section>
 </body>

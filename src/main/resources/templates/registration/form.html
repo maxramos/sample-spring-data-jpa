@@ -9,182 +9,96 @@
 <body>
 	<section>
 		<form th:action="@{/registration/register}" th:object="${user}" method="post">
-			<h5>Basic:</h5>
-			<table>
-				<tr>
-					<td>
-						<label for="username">Username</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{username}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="fieldError">Invalid Username</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="rawPassword">Password</label>
-					</td>
-					<td>
-						<input type="password" th:field="*{rawPassword}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('rawPassword')}" th:errors="*{rawPassword}" class="fieldError">Invalid Password</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="confirmRawPassword">Confirm Password</label>
-					</td>
-					<td>
-						<input type="password" th:field="*{confirmRawPassword}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('confirmRawPassword')}" th:errors="*{confirmRawPassword}" class="fieldError">Invalid Confirm Password</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="email">Email</label>
-					</td>
-					<td>
-						<input type="email" th:field="*{email}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="fieldError">Invalid Email</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="firstName">First Name</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{firstName}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="fieldError">Invalid First Name</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="lastName">Last Name</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{lastName}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="fieldError">Invalid Last Name</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="age">Age</label>
-					</td>
-					<td>
-						<input type="number" th:field="*{age}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="fieldError">Invalid Age</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="birthday">Birthday</label>
-					</td>
-					<td>
-						<input type="date" th:field="*{birthday}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="fieldError">Invalid Birthday</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="gender">Gender</label>
-					</td>
-					<td>
-						<select th:field="*{gender}" th:errorclass="fieldError">
+			<div class="row justify-content-around">
+				<div class="col-sm-5">
+					<h5>Basic</h5>
+					<div class="form-group">
+						<label for="username" class="col-form-label">Username</label>
+						<input type="text" class="form-control" th:field="*{username}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{username}">Invalid Username</p>
+					</div>
+					<div class="form-group">
+						<label for="rawPassword" class="col-form-label">Password</label>
+						<input type="password" class="form-control" th:field="*{rawPassword}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{rawPassword}">Invalid Password</p>
+					</div>
+					<div class="form-group">
+						<label for="confirmRawPassword" class="col-form-label">Confirm Password</label>
+						<input type="password" class="form-control" th:field="*{confirmRawPassword}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{confirmRawPassword}">Invalid Confirm Password</p>
+					</div>
+					<div class="form-group">
+						<label for="email" class="col-form-label">Email</label>
+						<input type="email" class="form-control" th:field="*{email}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{email}">Invalid Email</p>
+					</div>
+					<div class="form-group">
+						<label for="firstName" class="col-form-label">First Name</label>
+						<input type="text" class="form-control" th:field="*{firstName}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{firstName}">Invalid First Name</p>
+					</div>
+					<div class="form-group">
+						<label for="lastName" class="col-form-label">Last Name</label>
+						<input type="text" class="form-control" th:field="*{lastName}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{lastName}">Invalid Last Name</p>
+					</div>
+					<div class="form-group">
+						<label for="age" class="col-form-label">Age</label>
+						<input type="number" class="form-control" th:field="*{age}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{age}">Invalid Age</p>
+					</div>
+					<div class="form-group">
+						<label for="birthday" class="col-form-label">Birthday</label>
+						<input type="date" class="form-control" th:field="*{birthday}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{birthday}">Invalid Birthday</p>
+					</div>
+					<div class="form-group">
+						<label for="gender" class="col-form-label">Gender</label>
+						<select class="form-control" th:field="*{gender}" th:errorclass="is-invalid">
+							<option value="" disabled></option>
 							<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
 						</select>
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="fieldError">Invalid Gender</p>
-					</td>
-				</tr>
-			</table>
-			<h5>Address:</h5>
-			<table>
-				<tr>
-					<td>
-						<label for="address.address1">Address 1</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.address1}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.address1')}" th:errors="*{address.address1}" class="fieldError">Invalid Address 1</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.address2">Address 2</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.address2}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.address2')}" th:errors="*{address.address2}" class="fieldError">Invalid Address 2</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.city">City</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.city}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.city')}" th:errors="*{address.city}" class="fieldError">Invalid City</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.state">State</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.state}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.state')}" th:errors="*{address.state}" class="fieldError">Invalid State</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.country">Country</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.country}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.country')}" th:errors="*{address.country}" class="fieldError">Invalid Country</p>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="address.zipCode">Zip Code</label>
-					</td>
-					<td>
-						<input type="text" th:field="*{address.zipCode}" th:errorclass="fieldError" />
-					</td>
-					<td>
-						<p th:if="${#fields.hasErrors('address.zipCode')}" th:errors="*{address.zipCode}" class="fieldError">Invalid Zip Code</p>
-					</td>
-				</tr>
-			</table>
-			<div>
-				<input type="submit" value="Submit" />
-				<a href="/" th:href="@{/}">Cancel</a>
+						<p class="invalid-tooltip" th:errors="*{gender}">Invalid Gender</p>
+					</div>
+				</div>
+				<div class="col-sm-5">
+					<h5>Address</h5>
+					<div class="form-group">
+						<label for="address.address1" class="col-form-label">Address 1</label>
+						<input type="text" class="form-control" th:field="*{address.address1}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.address1}">Invalid Address 1</p>
+					</div>
+					<div class="form-group">
+						<label for="address.address2" class="col-form-label">Address 2</label>
+						<input type="text" class="form-control" th:field="*{address.address2}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.address2}">Invalid Address 2</p>
+					</div>
+					<div class="form-group">
+						<label for="address.city" class="col-form-label">City</label>
+						<input type="text" class="form-control" th:field="*{address.city}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.city}">Invalid City</p>
+					</div>
+					<div class="form-group">
+						<label for="address.state" class="col-form-label">State</label>
+						<input type="text" class="form-control" th:field="*{address.state}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.state}">Invalid State</p>
+					</div>
+					<div class="form-group">
+						<label for="address.country" class="col-form-label">Country</label>
+						<input type="text" class="form-control" th:field="*{address.country}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.country}">Invalid Country</p>
+					</div>
+					<div class="form-group">
+						<label for="address.zipCode" class="col-form-label">Zip Code</label>
+						<input type="text" class="form-control" th:field="*{address.zipCode}" th:errorclass="is-invalid" />
+						<p class="invalid-tooltip" th:errors="*{address.zipCode}">Invalid Zip Code</p>
+					</div>
+				</div>
+			</div>
+			<div class="row mt-2">
+				<div class="col text-center">
+					<input type="submit" class="btn btn-lg btn-primary" value="Submit" />
+				</div>
 			</div>
 		</form>
 	</section>
