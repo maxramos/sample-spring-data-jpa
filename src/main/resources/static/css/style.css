@@ -13,10 +13,6 @@ body > .container {
   margin-top: 70px;
 }
 
-.fieldError {
-	color: red;
-}
-
 .footer {
 	position: absolute;
 	bottom: 0;
@@ -24,4 +20,8 @@ body > .container {
 	height: 60px;
 	line-height: 60px;
 	background-color: #f5f5f5;
+}
+
+.fieldError {
+	color: red;
 }

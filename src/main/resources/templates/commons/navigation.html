@@ -10,8 +10,8 @@
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
+		<div id="navbarNav" class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
 				<li class="nav-item"><a class="nav-link" href="/" th:href="@{/}">Home</a></li>
 				<li class="nav-item"><a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
 				<li class="nav-item"><a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a></li>
@@ -19,25 +19,59 @@
 				<li class="nav-item"><a class="nav-link" href="/department/list" th:href="@{/department/list}">Departments</a></li>
 				<li class="nav-item"><a class="nav-link" href="/registration/form" th:href="@{/registration/form}">Registration</a></li>
 			</ul>
+			<form th:replace="commons/action::logout"></form>
 		</div>
 	</nav>
 	
 	<nav th:fragment="employee">
-		<a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a>
-		<a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a>
+		<a class="navbar-brand" href="/" th:href="@{/}">
+			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="spring-data">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNav" class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+			</ul>
+			<form th:replace="commons/action::logout"></form>
+		</div>
 	</nav>
 	
 	<nav th:fragment="supervisor">
-		<a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a>
-		<a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a class="nav-item nav-link text-light" href="/user/list" th:href="@{/user/list}">Users</a>
+		<a class="navbar-brand" href="/" th:href="@{/}">
+			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="spring-data">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNav" class="collapse navbar-collapse">
+			<ul class="navbar-nav  mr-auto">
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/user/list" th:href="@{/user/list}">Users</a></li>
+			</ul>
+			<form th:replace="commons/action::logout"></form>
+		</div>
 	</nav>
 	
 	<nav th:fragment="depthead">
-		<a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a>
-		<a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a>
-		<a class="nav-item nav-link text-light" href="/user/list" th:href="@{/user/list}">Users</a>
-		<a class="nav-item nav-link text-light" href="/team/list" th:href="@{/team/list}">Teams</a>
+		<a class="navbar-brand" href="/" th:href="@{/}">
+			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="spring-data">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div id="navbarNav" class="collapse navbar-collapse">
+			<ul class="navbar-nav  mr-auto">
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/" th:href="@{/}">Home</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/user/list" th:href="@{/user/list}">Users</a></li>
+				<li class="nav-item"><a class="nav-item nav-link text-light" href="/team/list" th:href="@{/team/list}">Teams</a></li>
+			</ul>
+			<form th:replace="commons/action::logout"></form>
+		</div>
 	</nav>
 </body>
 </html>

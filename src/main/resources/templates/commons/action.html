@@ -3,10 +3,8 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
-	<div th:fragment="logout" sec:authorize="isAuthenticated()">
-		<form action="#" th:action="@{/logout}" method="post">
-			<input type="submit" value="Logout" />
-		</form>
-	</div>
+	<form th:fragment="logout" sec:authorize="isAuthenticated()" action="#" th:action="@{/logout}" method="post" class="form-inline">
+		<input type="submit" value="Logout" class="btn" />
+	</form>
 </body>
 </html>
