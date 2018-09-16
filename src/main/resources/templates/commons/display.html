@@ -9,8 +9,10 @@
 	</div>
 
 	<div th:fragment="fullName" sec:authorize="isAuthenticated()">
-		<span>Welcome </span>
-		<span th:text="${session.loggedInUser.fullName}"></span>
+		<h5>
+			<span>Welcome </span>
+			<span th:text="${session.loggedInUser.fullName}"></span>
+		</h5>
 	</div>
 </body>
 </html>

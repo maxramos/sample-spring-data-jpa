@@ -8,20 +8,26 @@
 </head>
 <body>
 	<section>
-		<table border="1">
-			<tr>
-				<th></th>
-				<th>Name</th>
-				<th>Head</th>
-				<th>Size</th>
-			</tr>
-			<tr th:each="department,status : ${departments}">
-				<td th:text="${status.count}">count</td>
-				<td th:text="${department.name}">name</td>
-				<td th:text="${department.head?.fullName}">head</td>
-				<td th:text="${#lists.size(department.members)}">size</td>
-			</tr>
-		</table>
+		<div class="table-responsive">
+			<table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>Name</th>
+						<th>Head</th>
+						<th>Size</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="department,status : ${departments}">
+						<td th:text="${status.count}">count</td>
+						<td th:text="${department.name}">name</td>
+						<td th:text="${department.head?.fullName}">head</td>
+						<td th:text="${#lists.size(department.members)}">size</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</section>
 </body>
 </html>
