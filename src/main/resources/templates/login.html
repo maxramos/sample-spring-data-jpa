@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="commons/layout::base(~{::title}, ~{::header}, ~{::section})"
+<html th:replace="commons/layout::base(~{::title}, ~{}, ~{::section})"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
@@ -7,9 +7,6 @@
 	<title>Login</title>
 </head>
 <body>
-	<header>
-		<h1>Login</h1>
-	</header>
 	<section>
 		<p th:if="${param.logout}">
 			You have been logged out.
@@ -18,29 +15,27 @@
 			Invalid username or password.
 		</p>
 		<form th:action="@{/login}" method="post">
-			<table>
-				<tr>
-					<td>
-						<label for="username">Username</label>
-					</td>
-					<td>
-						<input type="text" id="username" name="username" />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<label for="password">Password</label>
-					</td>
-					<td>
-						<input type="password" id="password" name="password" />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="Log in" />
-					</td>
-				</tr>
-			</table>
+			<div>
+				<div>
+					<label for="username">Username</label>
+				</div>
+				<div>
+					<input type="text" id="username" name="username" />
+				</div>
+			</div>
+			<div>
+				<div>
+					<label for="password">Password</label>
+				</div>
+				<div>
+					<input type="password" id="password" name="password" />
+				</div>
+			</div>
+			<div>
+				<div>
+					<input type="submit" value="Log in" />
+				</div>
+			</div>
 		</form>
 	</section>
 </body>
