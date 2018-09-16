@@ -1,16 +1,15 @@
 package com.maxaramos.springdatajpatest.controller;
 
-import java.util.Set;
-
 import javax.servlet.http.HttpSession;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validator;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -28,10 +27,12 @@ public class UserController {
 	private Logger log;
 
 	@Autowired
-	private Validator validator;
-
-	@Autowired
 	private UserService userService;
+
+	@ModelAttribute(name = "genders")
+	public GenderType[] getGenders() {
+		return GenderType.values();
+	}
 
 	@GetMapping("/list")
 	public String list(Model model, HttpSession session) {
@@ -44,15 +45,12 @@ public class UserController {
 	public String profile(Model model, HttpSession session) {
 		User user = (User) session.getAttribute(User.LOGGED_IN_USER_ATTR);
 		model.addAttribute("user", user);
-		model.addAttribute("genders", GenderType.values());
 		return "/user/profile";
 	}
 
 	@PostMapping("/save")
-	public String save(User user, HttpSession session) {
-		Set<ConstraintViolation<User>> violations = validator.validate(user, Save.class);
-
-		if (!violations.isEmpty()) {
+	public String save(@Validated(Save.class) User user, BindingResult bindingResult, HttpSession session) {
+		if (bindingResult.hasErrors()) {
 			log.debug("Invalid user: {}", user);
 			return "/user/profile";
 		}
@@ -71,10 +69,8 @@ public class UserController {
 	}
 
 	@PostMapping("/changePassword")
-	public String changePassword(User user, HttpSession session) {
-		Set<ConstraintViolation<User>> violations = validator.validate(user, ChangePassword.class);
-
-		if (!violations.isEmpty()) {
+	public String changePassword(@Validated(ChangePassword.class) User user, BindingResult bindingResult, HttpSession session) {
+		if (bindingResult.hasErrors()) {
 			log.debug("Invalid user: {}", user);
 			return "/user/profile";
 		}
