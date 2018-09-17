@@ -20,10 +20,10 @@
 				</thead>
 				<tbody>
 					<tr th:each="department,status : ${departments}">
-						<td th:text="${status.count}">count</td>
-						<td th:text="${department.name}">name</td>
-						<td class="text-nowrap" th:text="${department.head?.fullName}">head</td>
-						<td th:text="${#lists.size(department.members)}">size</td>
+						<td th:text="${status.count}">Count</td>
+						<td th:text="${department.name}">Name</td>
+						<td class="text-nowrap" th:text="${department.head?.fullName}">Head</td>
+						<td th:text="${#lists.size(department.members)}">Size</td>
 					</tr>
 				</tbody>
 			</table>

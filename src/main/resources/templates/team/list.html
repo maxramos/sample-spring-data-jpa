@@ -19,9 +19,9 @@
 				</thead>
 				<tbody>
 					<tr th:each="team,status : ${teams}">
-						<td th:text="${status.count}">count</td>
-						<td class="text-nowrap" th:text="${team.fullName}">supervisor</td>
-						<td th:text="${#lists.size(team.supervisees)}">size</td>
+						<td th:text="${status.count}">Count</td>
+						<td class="text-nowrap" th:text="${team.fullName}">Supervisor</td>
+						<td th:text="${#lists.size(team.supervisees)}">Size</td>
 					</tr>
 				</tbody>
 			</table>
