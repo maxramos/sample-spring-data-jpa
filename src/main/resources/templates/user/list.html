@@ -13,48 +13,55 @@
 				<thead>
 					<tr>
 						<th>#</th>
-						<th>Username</th>
-						<th>Role</th>
-						<th>Email</th>
-						<th>Name</th>
-						<th>Age</th>
-						<th>Birthday</th>
-						<th>Gender</th>
+						<th>User</th>
 						<th>Address</th>
 						<th>Supervisor</th>
-						<th>Department</th>
-						<th>Enabled</th>
 						<th>Action</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="user,status : ${users}">
 						<td th:text="${status.count}">count</td>
-						<td th:text="${user.username}">username</td>
-						<td th:text="${user.role}">role</td>
-						<td th:text="${user.email}">email</td>
-						<td th:text="${user.fullName}">full name</td>
-						<td th:text="${user.age}">age</td>
-						<td th:text="${user.birthday}">birthday</td>
-						<td th:text="${{user.gender}}">gender</td>
 						<td>
-							<p>
-								[(${user.address.formattedAddress})]
-							</p>
+							<div class="d-flex flex-nowrap">
+								<span th:text="${user.username}">Username</span>
+								<img src="/img/male-icon.png" th:src="@{'/img/' + ${{user.gender}} + '-icon.png'}" width="16" height="16" alt="gender">
+							</div>
+							<div>
+								<span th:text="${user.fullName}">full name</span>
+							</div>
+							<div class="d-flex flex-nowrap">
+								<span th:text="${user.birthday}">birthday</span>
+								<span th:text="${'(' + user.age + ')'}">age</span>
+							</div>
+							<div>
+								<span th:text="${user.email}">email</span>
+							</div>
+							<div class="d-flex flex-column">
+								<span th:text="${user.role}">role</span>
+								<span th:text="${user.department?.name}">department</span>
+							</div>
 						</td>
-						<td th:text="${user.supervisor?.fullName}">supervisor</td>
-						<td th:text="${user.department?.name}">department</td>
-						<td>
-							<form th:if="${not user.enabled}" th:action="@{/admin/user/enable(id=${user.id})}" method="post">
-								<input type="submit" class="btn btn-sm btn-success" value="Enable" th:disabled="${user.id == session.loggedInUser.id}" />
-							</form>
-							<form th:if="${user.enabled}" th:action="@{/admin/user/disable(id=${user.id})}" method="post">
-								<input type="submit" class="btn btn-sm btn-warning" value="Disable" th:disabled="${user.id == session.loggedInUser.id}" />
-							</form>
+						<td class="d-flex flex-column">
+							<span class="text-nowrap" th:text="${user.address.address1}">address1</span>
+							<span class="text-nowrap" th:if="${not #strings.isEmpty(user.address.address2)}" th:text="${user.address.address2}">address2</span>								
+							<span class="text-nowrap" th:text="${user.address.city}">city</span>
+							<span class="text-nowrap" th:text="${user.address.state}">state</span>
+							<span class="text-nowrap" th:text="${user.address.country}">country</span>
+							<span class="text-nowrap" th:text="${user.address.zipCode}">zipCode</span>
 						</td>
+						<td class="text-nowrap" th:text="${user.supervisor?.fullName}">supervisor</td>
 						<td>
+							<div>
+								<form th:if="${not user.enabled}" th:action="@{/admin/user/enable(id=${user.id})}" method="post">
+									<input type="submit" class="action-btn btn btn-sm btn-success" value="Enable" th:disabled="${user.id == session.loggedInUser.id}" />
+								</form>
+								<form th:if="${user.enabled}" th:action="@{/admin/user/disable(id=${user.id})}" method="post">
+									<input type="submit" class="action-btn btn btn-sm btn-warning" value="Disable" th:disabled="${user.id == session.loggedInUser.id}" />
+								</form>
+							</div>
 							<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
-								<input type="submit" class="btn btn-sm btn-danger" value="Delete" th:disabled="${user.id == session.loggedInUser.id}" />
+								<input type="submit" class="action-btn btn btn-sm btn-danger" value="Delete" th:disabled="${user.id == session.loggedInUser.id}" />
 							</form>
 						</td>
 					</tr>

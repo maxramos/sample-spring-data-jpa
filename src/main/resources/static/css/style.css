@@ -58,3 +58,7 @@ body > .container > section {
 .form-group {
 	position: relative;
 }
+
+.action-btn {
+	width: 60px;
+}

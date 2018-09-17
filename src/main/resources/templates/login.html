@@ -10,14 +10,14 @@
 	<form class="form-signin" th:action="@{/login}" method="post">
 		<img class="mb-1" src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="110" height="110" alt="spring-data">
 		<h3 class="font-weight-normal mb-3">Sign In</h3>
-		<p th:if="${param.logout}">You have been logged out.</p>
-		<p th:if="${param.error}">Invalid username or password.</p>
+		<div class="mb-3" th:if="${param.logout}">You have been logged out.</div>
+		<div class="mb-3" th:if="${param.error}">Invalid username or password.</div>
 		<label for="username" class="sr-only">Username</label>
 		<input type="text" id="username" name="username" class="form-control" placeholder="Username" />
 		<label for="password" class="sr-only">Password</label>
 		<input type="password" id="password" name="password" class="form-control" placeholder="Password" />
 		<input type="submit" class="btn btn-lg btn-primary btn-block" value="Log in" />
-		<p class="mt-5 text-muted">&copy;2018 Max Ramos All Rights Reserved</p>
+		<div class="mt-5 text-muted">&copy;2018 Max Ramos All Rights Reserved</div>
 	</form>
 </body>
 </html>

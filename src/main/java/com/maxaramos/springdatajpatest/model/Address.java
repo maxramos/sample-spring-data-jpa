@@ -9,8 +9,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
-import org.springframework.util.StringUtils;
-
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 @Entity
@@ -27,7 +25,6 @@ public class Address {
 	private String address1;
 
 	@Column(name = "address2")
-	@Size(min = 1, max = 100, groups = { Default.class, Save.class })
 	private String address2;
 
 	@Column(name = "city")
@@ -45,21 +42,6 @@ public class Address {
 	@Column(name = "zip_code")
 	@Size(min = 1, max = 10, groups = { Default.class, Save.class })
 	private String zipCode;
-
-	public String getFormattedAddress() {
-		StringBuilder builder = new StringBuilder();
-		builder.append(address1).append("<br />");
-
-		if (!StringUtils.isEmpty(address2)) {
-			builder.append(address2).append("<br />");
-		}
-
-		builder.append(city).append("<br />");
-		builder.append(state).append("<br />");
-		builder.append(country).append("<br />");
-		builder.append(zipCode);
-		return builder.toString();
-	}
 
 	public String getAddress1() {
 		return address1;

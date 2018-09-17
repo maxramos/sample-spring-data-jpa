@@ -20,7 +20,7 @@
 				<tbody>
 					<tr th:each="team,status : ${teams}">
 						<td th:text="${status.count}">count</td>
-						<td th:text="${team.fullName}">supervisor</td>
+						<td class="text-nowrap" th:text="${team.fullName}">supervisor</td>
 						<td th:text="${#lists.size(team.supervisees)}">size</td>
 					</tr>
 				</tbody>
