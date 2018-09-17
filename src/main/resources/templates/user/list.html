@@ -42,17 +42,21 @@
 								<span th:text="${user.department?.name}">Department</span>
 							</div>
 						</td>
-						<td class="d-flex flex-column">
-							<span class="text-nowrap" th:text="${user.address.address1}">Address1</span>
-							<span class="text-nowrap" th:if="${not #strings.isEmpty(user.address.address2)}" th:text="${user.address.address2}">Address2</span>								
-							<span class="text-nowrap" th:text="${user.address.city}">City</span>
-							<span class="text-nowrap" th:text="${user.address.state}">State</span>
-							<span class="text-nowrap" th:text="${user.address.country}">Country</span>
-							<span class="text-nowrap" th:text="${user.address.zipCode}">Zip Code</span>
+						<td>
+							<div class="d-flex flex-column">
+								<span class="text-nowrap" th:text="${user.address.address1}">Address1</span>
+								<span class="text-nowrap" th:if="${not #strings.isEmpty(user.address.address2)}" th:text="${user.address.address2}">Address2</span>								
+								<span class="text-nowrap" th:text="${user.address.city}">City</span>
+								<span class="text-nowrap" th:text="${user.address.state}">State</span>
+								<span class="text-nowrap" th:text="${user.address.country}">Country</span>
+								<span class="text-nowrap" th:text="${user.address.zipCode}">Zip Code</span>
+							</div>
 						</td>
-						<td class="d-flex flex-column">
-							<span th:text="${user.supervisor?.username}">Supervisor Username</span>
-							<span class="text-nowrap" th:text="${user.supervisor?.fullName}">Supervisor Full Name</span>
+						<td>
+							<div class="d-flex flex-column">
+								<span th:text="${user.supervisor?.username}">Supervisor Username</span>
+								<span class="text-nowrap" th:text="${user.supervisor?.fullName}">Supervisor Full Name</span>
+							</div>
 						</td>
 						<td>
 							<div>

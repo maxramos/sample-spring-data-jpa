@@ -22,7 +22,12 @@
 					<tr th:each="department,status : ${departments}">
 						<td th:text="${status.count}">Count</td>
 						<td th:text="${department.name}">Name</td>
-						<td class="text-nowrap" th:text="${department.head?.fullName}">Head</td>
+						<td>
+							<div class="d-flex flex-column">
+								<span th:text="${department.head?.username}">Username</span>
+								<span class="text-nowrap" th:text="${department.head?.fullName}">Full Name</span>
+							</div>
+						</td>
 						<td th:text="${#lists.size(department.members)}">Size</td>
 					</tr>
 				</tbody>
