@@ -21,41 +21,41 @@
 				</thead>
 				<tbody>
 					<tr th:each="user,status : ${users}">
-						<td th:text="${status.count}">Count</td>
+						<td th:text="${status.count}"></td>
 						<td>
 							<div class="d-flex flex-nowrap">
-								<span th:text="${user.username}">Username</span>
+								<span th:text="${user.username}"></span>
 								<img src="/img/male-icon.png" th:src="@{'/img/' + ${{user.gender}} + '-icon.png'}" width="16" height="16" alt="Gender">
 							</div>
 							<div>
-								<span th:text="${user.fullName}">Full Name</span>
+								<span th:text="${user.fullName}"></span>
 							</div>
 							<div class="d-flex flex-nowrap">
-								<span th:text="${user.birthday}">Birthday</span>
-								<span th:text="${'(' + user.age + ')'}">Age</span>
+								<span th:text="${user.birthday}"></span>
+								<span th:text="${'(' + user.age + ')'}"></span>
 							</div>
 							<div>
-								<span th:text="${user.email}">Email</span>
+								<span th:text="${user.email}"></span>
 							</div>
 							<div class="d-flex flex-column">
-								<span th:text="${user.role}">Role</span>
-								<span th:text="${user.department?.name}">Department</span>
-							</div>
-						</td>
-						<td>
-							<div class="d-flex flex-column">
-								<span class="text-nowrap" th:text="${user.address.address1}">Address1</span>
-								<span class="text-nowrap" th:if="${not #strings.isEmpty(user.address.address2)}" th:text="${user.address.address2}">Address2</span>								
-								<span class="text-nowrap" th:text="${user.address.city}">City</span>
-								<span class="text-nowrap" th:text="${user.address.state}">State</span>
-								<span class="text-nowrap" th:text="${user.address.country}">Country</span>
-								<span class="text-nowrap" th:text="${user.address.zipCode}">Zip Code</span>
+								<span th:text="${user.role}"></span>
+								<span th:text="${user.department?.name}"></span>
 							</div>
 						</td>
 						<td>
 							<div class="d-flex flex-column">
-								<span th:text="${user.supervisor?.username}">Supervisor Username</span>
-								<span class="text-nowrap" th:text="${user.supervisor?.fullName}">Supervisor Full Name</span>
+								<span class="text-nowrap" th:text="${user.address.address1}"></span>
+								<span class="text-nowrap" th:if="${not #strings.isEmpty(user.address.address2)}" th:text="${user.address.address2}"></span>								
+								<span class="text-nowrap" th:text="${user.address.city}"></span>
+								<span class="text-nowrap" th:text="${user.address.state}"></span>
+								<span class="text-nowrap" th:text="${user.address.country}"></span>
+								<span class="text-nowrap" th:text="${user.address.zipCode}"></span>
+							</div>
+						</td>
+						<td>
+							<div class="d-flex flex-column">
+								<span th:text="${user.supervisor?.username}"></span>
+								<span class="text-nowrap" th:text="${user.supervisor?.fullName}"></span>
 							</div>
 						</td>
 						<td>

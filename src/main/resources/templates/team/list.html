@@ -19,14 +19,14 @@
 				</thead>
 				<tbody>
 					<tr th:each="team,status : ${teams}">
-						<td th:text="${status.count}">Count</td>
+						<td th:text="${status.count}"></td>
 						<td>
 							<div class="d-flex flex-column">
-								<span th:text="${team.username}">Username</span>
-								<span class="text-nowrap" th:text="${team.fullName}">Full Name</span>
+								<span th:text="${team.username}"></span>
+								<span class="text-nowrap" th:text="${team.fullName}"></span>
 							</div>
 						</td>
-						<td th:text="${#lists.size(team.supervisees)}">Size</td>
+						<td th:text="${#lists.size(team.supervisees)}"></td>
 					</tr>
 				</tbody>
 			</table>

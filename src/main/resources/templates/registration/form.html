@@ -15,42 +15,42 @@
 					<div class="form-group">
 						<label for="username" class="col-form-label">Username</label>
 						<input type="text" class="form-control" th:field="*{username}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{username}">Invalid Username</div>
+						<div class="invalid-tooltip" th:errors="*{username}"></div>
 					</div>
 					<div class="form-group">
 						<label for="rawPassword" class="col-form-label">Password</label>
 						<input type="password" class="form-control" th:field="*{rawPassword}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{rawPassword}">Invalid Password</div>
+						<div class="invalid-tooltip" th:errors="*{rawPassword}"></div>
 					</div>
 					<div class="form-group">
 						<label for="confirmRawPassword" class="col-form-label">Confirm Password</label>
 						<input type="password" class="form-control" th:field="*{confirmRawPassword}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{confirmRawPassword}">Invalid Confirm Password</div>
+						<div class="invalid-tooltip" th:errors="*{confirmRawPassword}"></div>
 					</div>
 					<div class="form-group">
 						<label for="email" class="col-form-label">Email</label>
 						<input type="email" class="form-control" th:field="*{email}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{email}">Invalid Email</div>
+						<div class="invalid-tooltip" th:errors="*{email}"></div>
 					</div>
 					<div class="form-group">
 						<label for="firstName" class="col-form-label">First Name</label>
 						<input type="text" class="form-control" th:field="*{firstName}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{firstName}">Invalid First Name</div>
+						<div class="invalid-tooltip" th:errors="*{firstName}"></div>
 					</div>
 					<div class="form-group">
 						<label for="lastName" class="col-form-label">Last Name</label>
 						<input type="text" class="form-control" th:field="*{lastName}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{lastName}">Invalid Last Name</div>
+						<div class="invalid-tooltip" th:errors="*{lastName}"></div>
 					</div>
 					<div class="form-group">
 						<label for="age" class="col-form-label">Age</label>
 						<input type="number" class="form-control" th:field="*{age}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{age}">Invalid Age</div>
+						<div class="invalid-tooltip" th:errors="*{age}"></div>
 					</div>
 					<div class="form-group">
 						<label for="birthday" class="col-form-label">Birthday</label>
 						<input type="date" class="form-control" th:field="*{birthday}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{birthday}">Invalid Birthday</div>
+						<div class="invalid-tooltip" th:errors="*{birthday}"></div>
 					</div>
 					<div class="form-group">
 						<label for="gender" class="col-form-label">Gender</label>
@@ -58,7 +58,7 @@
 							<option value="" disabled></option>
 							<option th:each="genderType : ${genders}" th:value="${genderType}" th:text="${{genderType}}"></option>
 						</select>
-						<div class="invalid-tooltip" th:errors="*{gender}">Invalid Gender</div>
+						<div class="invalid-tooltip" th:errors="*{gender}"></div>
 					</div>
 				</div>
 				<div class="col-sm-5">
@@ -66,32 +66,32 @@
 					<div class="form-group">
 						<label for="address.address1" class="col-form-label">Address 1</label>
 						<input type="text" class="form-control" th:field="*{address.address1}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.address1}">Invalid Address 1</div>
+						<div class="invalid-tooltip" th:errors="*{address.address1}"></div>
 					</div>
 					<div class="form-group">
 						<label for="address.address2" class="col-form-label">Address 2</label>
 						<input type="text" class="form-control" th:field="*{address.address2}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.address2}">Invalid Address 2</div>
+						<div class="invalid-tooltip" th:errors="*{address.address2}"></div>
 					</div>
 					<div class="form-group">
 						<label for="address.city" class="col-form-label">City</label>
 						<input type="text" class="form-control" th:field="*{address.city}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.city}">Invalid City</div>
+						<div class="invalid-tooltip" th:errors="*{address.city}"></div>
 					</div>
 					<div class="form-group">
 						<label for="address.state" class="col-form-label">State</label>
 						<input type="text" class="form-control" th:field="*{address.state}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.state}">Invalid State</div>
+						<div class="invalid-tooltip" th:errors="*{address.state}"></div>
 					</div>
 					<div class="form-group">
 						<label for="address.country" class="col-form-label">Country</label>
 						<input type="text" class="form-control" th:field="*{address.country}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.country}">Invalid Country</div>
+						<div class="invalid-tooltip" th:errors="*{address.country}"></div>
 					</div>
 					<div class="form-group">
 						<label for="address.zipCode" class="col-form-label">Zip Code</label>
 						<input type="text" class="form-control" th:field="*{address.zipCode}" th:errorclass="is-invalid" />
-						<div class="invalid-tooltip" th:errors="*{address.zipCode}">Invalid Zip Code</div>
+						<div class="invalid-tooltip" th:errors="*{address.zipCode}"></div>
 					</div>
 				</div>
 			</div>
