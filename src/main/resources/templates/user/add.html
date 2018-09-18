@@ -4,11 +4,11 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-	<title>Registration</title>
+	<title>Add User</title>
 </head>
 <body>
 	<section>
-		<form th:action="@{/registration/register}" th:object="${user}" method="post">
+		<form th:action="@{/user/add}" th:object="${user}" method="post">
 			<div class="row justify-content-around">
 				<div class="col-sm-5">
 					<h5>Basic</h5>

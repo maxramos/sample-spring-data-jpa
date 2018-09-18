@@ -18,17 +18,18 @@
 				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Profile')})? 'active'">
 					<a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a>
 				</li>
-				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Users')})? 'active'">
-					<a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a>
+				<li class="nav-item dropdown" th:classappend="(${#strings.contains(title, 'User')})? 'active'">
+					<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Users</a>
+					 <div class="dropdown-menu">
+						<a class="dropdown-item" th:classappend="(${#strings.contains(title, 'Users')})? 'active'" href="/user/list" th:href="@{/user/list}">List</a>
+						<a class="dropdown-item" th:classappend="(${#strings.contains(title, 'Add')})? 'active'" href="/user/add" th:href="@{/user/add}">Add</a>
+					</div>
 				</li>
 				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Teams')})? 'active'">
 					<a class="nav-link" href="/team/list" th:href="@{/team/list}">Teams</a>
 				</li>
 				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Departments')})? 'active'">
 					<a class="nav-link" href="/department/list" th:href="@{/department/list}">Departments</a>
-				</li>
-				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Registration')})? 'active'">
-					<a class="nav-link" href="/registration/form" th:href="@{/registration/form}">Registration</a>
 				</li>
 			</ul>
 			<form th:replace="commons/action::logout"></form>

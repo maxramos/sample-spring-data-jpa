@@ -48,6 +48,24 @@ public class UserController {
 		return "/user/profile";
 	}
 
+	@GetMapping("/add")
+	public String add(Model model) {
+		model.addAttribute("user", new User());
+		return "/user/add";
+	}
+
+	@PostMapping("/add")
+	public String register(@Validated User user, BindingResult bindingResult) {
+		if (bindingResult.hasErrors()) {
+			log.debug("Invalid user: {}", user);
+			return "/user/add";
+		}
+
+		User savedUser = userService.register(user);
+		log.debug("Saved user: {}", savedUser);
+		return "redirect:/user/list";
+	}
+
 	@PostMapping("/save")
 	public String save(@Validated(Save.class) User user, BindingResult bindingResult, HttpSession session) {
 		if (bindingResult.hasErrors()) {
