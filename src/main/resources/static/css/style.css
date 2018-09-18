@@ -59,6 +59,10 @@ body > .container > section {
 	position: relative;
 }
 
+.submit-btn {
+	width: 95px;
+}
+
 .action-btn {
 	width: 60px;
 }
