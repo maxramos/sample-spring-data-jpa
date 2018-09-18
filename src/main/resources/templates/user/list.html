@@ -25,7 +25,7 @@
 						<td>
 							<div class="d-flex flex-nowrap">
 								<span th:text="${user.username}"></span>
-								<img src="/img/male-icon.png" th:src="@{'/img/' + ${{user.gender}} + '-icon.png'}" width="16" height="16" alt="Gender">
+								<img th:src="@{'/img/gender-' + ${{user.gender}} + '-icon.png'}" width="16" height="16" alt="Gender">
 							</div>
 							<div>
 								<span th:text="${user.fullName}"></span>

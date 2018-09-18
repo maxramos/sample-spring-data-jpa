@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form class="form-signin" th:action="@{/login}" method="post">
-		<img class="mb-1" src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="110" height="110" alt="Spring Data">
+		<img class="mb-1" th:src="@{/img/spring-data-icon.png}" width="110" height="110" alt="Spring Data">
 		<h3 class="font-weight-normal mb-3">Sign In</h3>
 		<div class="mb-3" th:if="${param.logout}">You have been logged out.</div>
 		<div class="mb-3" th:if="${param.error}">Invalid Username or Password.</div>
