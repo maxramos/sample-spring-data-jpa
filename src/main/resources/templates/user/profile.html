@@ -18,12 +18,12 @@
 						<div class="invalid-tooltip" th:errors="*{username}"></div>
 					</div>
 					<div class="form-group">
-						<label class="col-form-label">Password</label>
-						<div class="d-flex justify-content-between">
+						<label for="password" class="col-form-label">Password</label>
+						<div class="input-group">
 							<input type="password" id="password" class="form-control" value="password-placeholder" readonly />				
-							<a th:href="@{/user/changePassword}">
-								<button type="button" class="btn">Change</button>
-							</a>
+							<div class="input-group-append">
+								<a class="btn btn-secondary" th:href="@{/user/changePassword}">Change</a>
+							</div>
 						</div>
 					</div >
 					<div class="form-group">
