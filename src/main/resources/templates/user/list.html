@@ -61,14 +61,14 @@
 						<td>
 							<div>
 								<form th:if="${not user.enabled}" th:action="@{/admin/user/enable(id=${user.id})}" method="post">
-									<input type="submit" class="action-btn btn btn-sm btn-success" value="Enable" th:disabled="${user.id == session.loggedInUser.id}" />
+									<input type="submit" class="btn btn-sm btn-success btn-action" value="Enable" th:disabled="${user.id == session.loggedInUser.id}" />
 								</form>
 								<form th:if="${user.enabled}" th:action="@{/admin/user/disable(id=${user.id})}" method="post">
-									<input type="submit" class="action-btn btn btn-sm btn-warning" value="Disable" th:disabled="${user.id == session.loggedInUser.id}" />
+									<input type="submit" class="btn btn-sm btn-warning btn-action" value="Disable" th:disabled="${user.id == session.loggedInUser.id}" />
 								</form>
 							</div>
 							<form th:action="@{/admin/user/delete(id=${user.id})}" method="post">
-								<input type="submit" class="action-btn btn btn-sm btn-danger" value="Delete" th:disabled="${user.id == session.loggedInUser.id}" />
+								<input type="submit" class="btn btn-sm btn-danger btn-action" value="Delete" th:disabled="${user.id == session.loggedInUser.id}" />
 							</form>
 						</td>
 					</tr>

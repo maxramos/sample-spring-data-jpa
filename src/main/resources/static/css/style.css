@@ -1,7 +1,6 @@
 @CHARSET "ISO-8859-1";
 
 html {
-	position: relative;
 	height: 100%;
 }
 
@@ -13,10 +12,6 @@ body {
 body > .container > section {
   padding-top: 70px;
   padding-bottom: 10px;
-}
-
-.fieldError {
-	color: red;
 }
 
 .form-signin {
@@ -59,10 +54,10 @@ body > .container > section {
 	position: relative;
 }
 
-.submit-btn {
+.btn-submit {
 	width: 95px;
 }
 
-.action-btn {
+.btn-action {
 	width: 60px;
 }
