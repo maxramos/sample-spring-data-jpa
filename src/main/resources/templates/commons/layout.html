@@ -12,7 +12,7 @@
 </head>
 <body>
 	<header class="header">	
-		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" sec:authorize="isAuthenticated()" th:include="commons/navigation::${session.loggedInUser.role}"></nav>
+		<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top" sec:authorize="isAuthenticated()" th:include="commons/navigation::${session.loggedInUser.role}(${title})"></nav>
 	</header>
 	<div class="container">
 		<section th:replace="${content}"></section>

@@ -3,7 +3,7 @@
 	xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <body>
-	<nav th:fragment="admin">
+	<nav th:fragment="admin(title)">
 		<a class="navbar-brand" href="/" th:href="@{/}">
 			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="Spring Data">
 		</a>
@@ -12,18 +12,30 @@
 		</button>
 		<div id="navbarNav" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/" th:href="@{/}">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a></li>
-				<li class="nav-item"><a class="nav-link" href="/team/list" th:href="@{/team/list}">Teams</a></li>
-				<li class="nav-item"><a class="nav-link" href="/department/list" th:href="@{/department/list}">Departments</a></li>
-				<li class="nav-item"><a class="nav-link" href="/registration/form" th:href="@{/registration/form}">Registration</a></li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Home')})? 'active'">
+					<a class="nav-link" href="/" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Profile')})? 'active'">
+					<a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Users')})? 'active'">
+					<a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Teams')})? 'active'">
+					<a class="nav-link" href="/team/list" th:href="@{/team/list}">Teams</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Departments')})? 'active'">
+					<a class="nav-link" href="/department/list" th:href="@{/department/list}">Departments</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Registration')})? 'active'">
+					<a class="nav-link" href="/registration/form" th:href="@{/registration/form}">Registration</a>
+				</li>
 			</ul>
 			<form th:replace="commons/action::logout"></form>
 		</div>
 	</nav>
 	
-	<nav th:fragment="employee">
+	<nav th:fragment="employee(title)">
 		<a class="navbar-brand" href="/" th:href="@{/}">
 			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="Spring Data">
 		</a>
@@ -32,14 +44,18 @@
 		</button>
 		<div id="navbarNav" class="collapse navbar-collapse">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/" th:href="@{/}">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Home')})? 'active'">
+					<a class="nav-link" href="/" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Profile')})? 'active'">
+					<a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a>
+				</li>
 			</ul>
 			<form th:replace="commons/action::logout"></form>
 		</div>
 	</nav>
 	
-	<nav th:fragment="supervisor">
+	<nav th:fragment="supervisor(title)">
 		<a class="navbar-brand" href="/" th:href="@{/}">
 			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="Spring Data">
 		</a>
@@ -48,15 +64,21 @@
 		</button>
 		<div id="navbarNav" class="collapse navbar-collapse">
 			<ul class="navbar-nav  mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/" th:href="@{/}">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a></li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Home')})? 'active'">
+					<a class="nav-link" href="/" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Profile')})? 'active'">
+					<a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Users')})? 'active'">
+					<a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a>
+				</li>
 			</ul>
 			<form th:replace="commons/action::logout"></form>
 		</div>
 	</nav>
 	
-	<nav th:fragment="depthead">
+	<nav th:fragment="depthead(title)">
 		<a class="navbar-brand" href="/" th:href="@{/}">
 			<img src="/img/spring-data-icon.png" th:src="@{/img/spring-data-icon.png}" width="40" height="40" alt="Spring Data">
 		</a>
@@ -65,10 +87,18 @@
 		</button>
 		<div id="navbarNav" class="collapse navbar-collapse">
 			<ul class="navbar-nav  mr-auto">
-				<li class="nav-item"><a class="nav-link" href="/" th:href="@{/}">Home</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a></li>
-				<li class="nav-item"><a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a></li>
-				<li class="nav-item"><a class="nav-link" href="/team/list" th:href="@{/team/list}">Teams</a></li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Home')})? 'active'">
+					<a class="nav-link" href="/" th:href="@{/}">Home</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Profile')})? 'active'">
+					<a class="nav-link" href="/user/profile" th:href="@{/user/profile}">Profile</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Users')})? 'active'">
+					<a class="nav-link" href="/user/list" th:href="@{/user/list}">Users</a>
+				</li>
+				<li class="nav-item" th:classappend="(${#strings.contains(title, 'Teams')})? 'active'">
+					<a class="nav-link" href="/team/list" th:href="@{/team/list}">Teams</a>
+				</li>
 			</ul>
 			<form th:replace="commons/action::logout"></form>
 		</div>
