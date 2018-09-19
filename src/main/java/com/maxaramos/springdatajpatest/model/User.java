@@ -105,6 +105,10 @@ public class User implements UserDetails {
 	@NotNull(groups = { Default.class, Save.class })
 	private GenderType gender;
 
+	@Column(name = "contact_number")
+	@Size(min = 1, max = 20, groups = { Default.class, Save.class })
+	private String contactNumber;
+
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	@JoinColumn(name = "address_id")
 	@Valid
@@ -259,6 +263,14 @@ public class User implements UserDetails {
 		this.gender = gender;
 	}
 
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
 	public Address getAddress() {
 		return address;
 	}
@@ -289,8 +301,8 @@ public class User implements UserDetails {
 
 	@Override
 	public String toString() {
-		return String.format("User [id=%s, username=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s]", id, username, enabled, email, firstName,
-				lastName, age, birthday, gender);
+		return String.format("User [id=%s, username=%s, enabled=%s, email=%s, firstName=%s, lastName=%s, age=%s, birthday=%s, gender=%s, contactNumber=%s]", id, username, enabled,
+				email, firstName, lastName, age, birthday, gender, contactNumber);
 	}
 
 }

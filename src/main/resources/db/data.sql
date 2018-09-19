@@ -58,48 +58,48 @@ VALUES(2, 'Operations');
 
 -- *** USER ***
 -- Admin
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id)
-VALUES(1, 'max.a.ramos', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'max.a.ramos@gmail.com', 'Max', 'Ramos', 30, '1988-05-11', 'MALE', 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id)
+VALUES(1, 'max.a.ramos', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'max.a.ramos@gmail.com', 'Max', 'Ramos', 30, '1988-05-11', 'MALE', '09171234567', 1);
 
 -- Dept#1
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(2, 'therese.m.tan1', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan1', 31, '1986-12-25', 'FEMALE', 2, 1, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(2, 'therese.m.tan1', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan1', 31, '1986-12-25', 'FEMALE', '09321234567', 2, 1, 1);
 
 -- Dept#1 - Team#1
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(3, 'paolo.a.ramos11', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos11', 25, '1993-08-11', 'MALE', 3, 2, 1);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(4, 'zoilo.a.ramos111', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos111', 23, '1995-06-27', 'MALE', 4, 3, 1);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(5, 'zoilo.a.ramos112', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos112', 23, '1995-06-27', 'MALE', 5, 3, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(3, 'paolo.a.ramos11', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos11', 25, '1993-08-11', 'MALE', '09181234567', 3, 2, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(4, 'zoilo.a.ramos111', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos111', 23, '1995-06-27', 'MALE', '09191234567', 4, 3, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(5, 'zoilo.a.ramos112', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos112', 23, '1995-06-27', 'MALE', '09191234567', 5, 3, 1);
 
 -- Dept#1 - Team#2
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(6, 'paolo.a.ramos12', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos12', 25, '1993-08-11', 'MALE', 6, 2, 1);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(7, 'zoilo.a.ramos121', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos121', 23, '1995-06-27', 'MALE', 7, 6, 1);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(8, 'zoilo.a.ramos122', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos122', 23, '1995-06-27', 'MALE', 8, 6, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(6, 'paolo.a.ramos12', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos12', 25, '1993-08-11', 'MALE', '09181234567', 6, 2, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(7, 'zoilo.a.ramos121', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos121', 23, '1995-06-27', 'MALE', '09191234567', 7, 6, 1);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(8, 'zoilo.a.ramos122', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos122', 23, '1995-06-27', 'MALE', '09191234567', 8, 6, 1);
 
 -- Dept#2
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(9, 'therese.m.tan2', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan2', 31, '1986-12-25', 'FEMALE', 9, 1, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(9, 'therese.m.tan2', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'therese.m.tan@gmail.com', 'Therese', 'Tan2', 31, '1986-12-25', 'FEMALE', '09321234567', 9, 1, 2);
 
 -- Dept#2 - Team#1
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(10, 'paolo.a.ramos21', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos21', 25, '1993-08-11', 'MALE', 10, 9, 2);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(11, 'zoilo.a.ramos211', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos211', 23, '1995-06-27', 'MALE', 11, 10, 2);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(12, 'zoilo.a.ramos212', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos212', 23, '1995-06-27', 'MALE', 12, 10, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(10, 'paolo.a.ramos21', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos21', 25, '1993-08-11', 'MALE', '09181234567', 10, 9, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(11, 'zoilo.a.ramos211', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos211', 23, '1995-06-27', 'MALE', '09191234567', 11, 10, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(12, 'zoilo.a.ramos212', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos212', 23, '1995-06-27', 'MALE', '09191234567', 12, 10, 2);
 
 -- Dept#2 - Team#2
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(13, 'paolo.a.ramos22', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos22', 25, '1993-08-11', 'MALE', 13, 9, 2);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(14, 'zoilo.a.ramos221', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos221', 23, '1995-06-27', 'MALE', 14, 13, 2);
-INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, address_id, supervisor_id, department_id)
-VALUES(15, 'zoilo.a.ramos222', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos222', 23, '1995-06-27', 'MALE', 15, 13, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(13, 'paolo.a.ramos22', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'paolo.a.ramos@gmail.com', 'Paolo', 'Ramos22', 25, '1993-08-11', 'MALE', '09181234567', 13, 9, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(14, 'zoilo.a.ramos221', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos221', 23, '1995-06-27', 'MALE', '09191234567', 14, 13, 2);
+INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id, supervisor_id, department_id)
+VALUES(15, 'zoilo.a.ramos222', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'zoilo.a.ramos@gmail.com', 'Zoilo', 'Ramos222', 23, '1995-06-27', 'MALE', '09191234567', 15, 13, 2);
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -24,6 +24,7 @@ CREATE TABLE users (
 	age INTEGER NOT NULL,
 	birthday DATE NOT NULL,
 	gender VARCHAR(6) NOT NULL,
+	contact_number VARCHAR(20) NOT NULL,
 	address_id BIGINT REFERENCES addresses(id),
 	supervisor_id BIGINT REFERENCES users(id),
 	department_id BIGINT REFERENCES departments(id)
