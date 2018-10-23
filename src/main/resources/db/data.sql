@@ -57,6 +57,7 @@ VALUES(2, 'Operations');
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 -- *** USER ***
+-- Default Password: changeit
 -- Admin
 INSERT INTO users(id, username, password, enabled, email, first_name, last_name, age, birthday, gender, contact_number, address_id)
 VALUES(1, 'max.a.ramos', '$2a$10$wTrJXHGYS31v1jSVUdACoelFSHA.g13eBA.wjQnkb56rzAJPUlW8y', TRUE, 'max.a.ramos@gmail.com', 'Max', 'Ramos', 30, '1988-05-11', 'MALE', '09171234567', 1);

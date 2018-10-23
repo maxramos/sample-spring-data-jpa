@@ -66,6 +66,10 @@ public class UserService implements UserDetailsService {
 		return users;
 	}
 
+	public User findById(Long id) {
+		return userDao.findById(id).orElse(null);
+	}
+
 	public User findByUsername(String username) {
 		return userDao.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username: " + username));
 	}
