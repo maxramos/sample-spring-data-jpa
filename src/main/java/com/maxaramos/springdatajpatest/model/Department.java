@@ -75,7 +75,7 @@ public class Department {
 		return members;
 	}
 
-	@JsonView(BasicView.class)
+	@JsonView({ BasicView.class, DepartmentView.class })
 	public int getDepartmentSize() {
 		return members.size();
 	}
