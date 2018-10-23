@@ -38,8 +38,8 @@ public class TeamService {
 		return findAllBySupervisor(supervisor);
 	}
 
-	public User findById(Long id) {
-		return userDao.findById(id).orElse(null);
+	public User findById(Long supervisorId, Long teamId) {
+		return findAllBySupervisorId(supervisorId).stream().filter(supervisor -> supervisor.getId() == teamId).findAny().orElse(null);
 	}
 
 }

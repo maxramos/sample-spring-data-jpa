@@ -18,16 +18,16 @@ public class TeamController {
 	@Autowired
 	private TeamService teamService;
 
-	@GetMapping
+	@GetMapping("/{supervisorId}")
 	@JsonView(TeamView.class)
-	public List<User> findAllBySupervisorId(Long id) {
-		return teamService.findAllBySupervisorId(id);
+	public List<User> findAllBySupervisorId(Long supervisorId) {
+		return teamService.findAllBySupervisorId(supervisorId);
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/{supervisorId}/{teamId}")
 	@JsonView(TeamMemberView.class)
-	public User findById(Long id) {
-		return teamService.findById(id);
+	public User findById(Long supervisorId, Long teamId) {
+		return teamService.findById(supervisorId, teamId);
 	}
 
 }
