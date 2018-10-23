@@ -33,4 +33,13 @@ public class TeamService {
 		return teams;
 	}
 
+	public List<User> findAllBySupervisorId(Long id) {
+		User supervisor = userDao.findById(id).orElseThrow(() -> new UserNotFoundException("Id: " + id));
+		return findAllBySupervisor(supervisor);
+	}
+
+	public User findById(Long id) {
+		return userDao.findById(id).orElse(null);
+	}
+
 }

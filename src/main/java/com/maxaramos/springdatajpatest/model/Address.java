@@ -9,6 +9,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.maxaramos.springdatajpatest.jsonview.UserView;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 @Entity
@@ -43,6 +45,12 @@ public class Address {
 	@Size(min = 1, max = 10, groups = { Default.class, Save.class })
 	private String zipCode;
 
+	@JsonView(UserView.class)
+	public Long getId() {
+		return id;
+	}
+
+	@JsonView(UserView.class)
 	public String getAddress1() {
 		return address1;
 	}
@@ -51,6 +59,7 @@ public class Address {
 		this.address1 = address1;
 	}
 
+	@JsonView(UserView.class)
 	public String getAddress2() {
 		return address2;
 	}
@@ -59,6 +68,7 @@ public class Address {
 		this.address2 = address2;
 	}
 
+	@JsonView(UserView.class)
 	public String getCity() {
 		return city;
 	}
@@ -67,6 +77,7 @@ public class Address {
 		this.city = city;
 	}
 
+	@JsonView(UserView.class)
 	public String getState() {
 		return state;
 	}
@@ -75,6 +86,7 @@ public class Address {
 		this.state = state;
 	}
 
+	@JsonView(UserView.class)
 	public String getCountry() {
 		return country;
 	}
@@ -83,16 +95,13 @@ public class Address {
 		this.country = country;
 	}
 
+	@JsonView(UserView.class)
 	public String getZipCode() {
 		return zipCode;
 	}
 
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
-	}
-
-	public Long getId() {
-		return id;
 	}
 
 	@Override

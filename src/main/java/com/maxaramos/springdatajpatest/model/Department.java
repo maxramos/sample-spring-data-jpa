@@ -16,6 +16,9 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.validation.groups.Default;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.maxaramos.springdatajpatest.jsonview.BasicView;
+import com.maxaramos.springdatajpatest.jsonview.DepartmentView;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
 @Entity
@@ -40,6 +43,12 @@ public class Department {
 	@OneToMany(mappedBy = "department")
 	private List<User> members = new ArrayList<>();
 
+	@JsonView({ BasicView.class, DepartmentView.class })
+	public Long getId() {
+		return id;
+	}
+
+	@JsonView({ BasicView.class, DepartmentView.class })
 	public String getName() {
 		return name;
 	}
@@ -56,12 +65,19 @@ public class Department {
 		this.head = head;
 	}
 
-	public Long getId() {
-		return id;
+	@JsonView({ BasicView.class, DepartmentView.class })
+	public String getHeadFullName() {
+		return head.getFullName();
 	}
 
+	@JsonView(DepartmentView.class)
 	public List<User> getMembers() {
 		return members;
+	}
+
+	@JsonView(BasicView.class)
+	public int getDepartmentSize() {
+		return members.size();
 	}
 
 	@Override

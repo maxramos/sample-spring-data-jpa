@@ -21,4 +21,8 @@ public class DepartmentService {
 		return departmentDao.findAll();
 	}
 
+	public Department findById(Long id) {
+		return departmentDao.findById(id).orElse(null);
+	}
+
 }

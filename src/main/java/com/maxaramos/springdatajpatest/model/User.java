@@ -36,6 +36,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.maxaramos.springdatajpatest.jsonview.BasicView;
+import com.maxaramos.springdatajpatest.jsonview.DepartmentView;
+import com.maxaramos.springdatajpatest.jsonview.TeamMemberView;
+import com.maxaramos.springdatajpatest.jsonview.TeamView;
+import com.maxaramos.springdatajpatest.jsonview.UserView;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.ChangePassword;
 import com.maxaramos.springdatajpatest.validation.ConstraintGroups.Save;
 
@@ -133,11 +139,13 @@ public class User implements UserDetails {
 		authorities.add(authority);
 	}
 
+	@JsonView({ BasicView.class, UserView.class, TeamView.class, TeamMemberView.class })
 	public Long getId() {
 		return id;
 	}
 
 	@Override
+	@JsonView({ BasicView.class, UserView.class })
 	public String getUsername() {
 		return username;
 	}
@@ -147,6 +155,7 @@ public class User implements UserDetails {
 	}
 
 	@Override
+	@JsonView(UserView.class)
 	public String getPassword() {
 		return password;
 	}
@@ -176,6 +185,7 @@ public class User implements UserDetails {
 		return authorities;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public String getRole() {
 		Optional<Authority> authority = authorities.stream().findAny();
 		String role = null;
@@ -188,6 +198,7 @@ public class User implements UserDetails {
 	}
 
 	@Override
+	@JsonView({ BasicView.class, UserView.class })
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -211,6 +222,7 @@ public class User implements UserDetails {
 		return true;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public String getEmail() {
 		return email;
 	}
@@ -219,6 +231,7 @@ public class User implements UserDetails {
 		this.email = email;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public String getFirstName() {
 		return firstName;
 	}
@@ -227,6 +240,7 @@ public class User implements UserDetails {
 		this.firstName = firstName;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public String getLastName() {
 		return lastName;
 	}
@@ -235,10 +249,12 @@ public class User implements UserDetails {
 		this.lastName = lastName;
 	}
 
+	@JsonView({ TeamView.class, TeamMemberView.class, DepartmentView.class })
 	public String getFullName() {
 		return firstName + " " + lastName;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public Integer getAge() {
 		return age;
 	}
@@ -247,6 +263,7 @@ public class User implements UserDetails {
 		this.age = age;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public LocalDate getBirthday() {
 		return birthday;
 	}
@@ -255,6 +272,7 @@ public class User implements UserDetails {
 		this.birthday = birthday;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public GenderType getGender() {
 		return gender;
 	}
@@ -263,6 +281,7 @@ public class User implements UserDetails {
 		this.gender = gender;
 	}
 
+	@JsonView({ BasicView.class, UserView.class })
 	public String getContactNumber() {
 		return contactNumber;
 	}
@@ -271,6 +290,7 @@ public class User implements UserDetails {
 		this.contactNumber = contactNumber;
 	}
 
+	@JsonView(UserView.class)
 	public Address getAddress() {
 		return address;
 	}
@@ -287,8 +307,19 @@ public class User implements UserDetails {
 		this.supervisor = supervisor;
 	}
 
+	@JsonView(UserView.class)
+	public String getSupervisorFullName() {
+		return supervisor.getFullName();
+	}
+
+	@JsonView(TeamMemberView.class)
 	public List<User> getSupervisees() {
 		return supervisees;
+	}
+
+	@JsonView({ TeamView.class, TeamMemberView.class })
+	public int getTeamSize() {
+		return supervisees.size();
 	}
 
 	public Department getDepartment() {
@@ -297,6 +328,11 @@ public class User implements UserDetails {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+
+	@JsonView(UserView.class)
+	public String getDepartmentName() {
+		return department.getName();
 	}
 
 	@Override
