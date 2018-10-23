@@ -309,6 +309,10 @@ public class User implements UserDetails {
 
 	@JsonView(UserView.class)
 	public String getSupervisorFullName() {
+		if (supervisor == null) {
+			return null;
+		}
+
 		return supervisor.getFullName();
 	}
 
@@ -332,6 +336,10 @@ public class User implements UserDetails {
 
 	@JsonView(UserView.class)
 	public String getDepartmentName() {
+		if (department == null) {
+			return null;
+		}
+
 		return department.getName();
 	}
 

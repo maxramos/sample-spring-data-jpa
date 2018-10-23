@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -12,8 +14,9 @@ import com.maxaramos.springdatajpatest.jsonview.DepartmentView;
 import com.maxaramos.springdatajpatest.model.Department;
 import com.maxaramos.springdatajpatest.service.DepartmentService;
 
-@RestController("/api/departments")
-public class DepartmentController {
+@RestController
+@RequestMapping("/api/departments")
+public class DepartmentRestController {
 
 	@Autowired
 	private DepartmentService departmentService;
@@ -26,7 +29,7 @@ public class DepartmentController {
 
 	@GetMapping("/{id}")
 	@JsonView(DepartmentView.class)
-	public Department findById(Long id) {
+	public Department findById(@PathVariable("id") Long id) {
 		return departmentService.findById(id);
 	}
 
