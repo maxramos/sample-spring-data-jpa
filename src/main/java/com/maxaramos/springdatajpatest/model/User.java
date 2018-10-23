@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -316,9 +317,13 @@ public class User implements UserDetails {
 		return supervisor.getFullName();
 	}
 
-	@JsonView(TeamMemberView.class)
 	public List<User> getSupervisees() {
 		return supervisees;
+	}
+
+	@JsonView(TeamMemberView.class)
+	public List<String> getSuperviseeFullNames() {
+		return supervisees.stream().map(supervisee -> supervisee.getFullName()).collect(Collectors.toList());
 	}
 
 	@JsonView({ TeamView.class, TeamMemberView.class })

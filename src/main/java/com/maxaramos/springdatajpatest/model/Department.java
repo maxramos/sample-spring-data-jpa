@@ -2,6 +2,7 @@ package com.maxaramos.springdatajpatest.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -70,9 +71,13 @@ public class Department {
 		return head.getFullName();
 	}
 
-	@JsonView(DepartmentView.class)
 	public List<User> getMembers() {
 		return members;
+	}
+
+	@JsonView(DepartmentView.class)
+	public List<String> getMemberFullNames() {
+		return members.stream().map(member -> member.getFullName()).collect(Collectors.toList());
 	}
 
 	@JsonView({ BasicView.class, DepartmentView.class })
