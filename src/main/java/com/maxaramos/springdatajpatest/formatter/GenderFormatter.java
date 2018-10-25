@@ -1,4 +1,4 @@
-package com.maxaramos.springdatajpatest.web;
+package com.maxaramos.springdatajpatest.formatter;
 
 import java.text.ParseException;
 import java.util.Locale;
