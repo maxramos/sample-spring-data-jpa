@@ -1,8 +1,10 @@
 package com.maxaramos.springdatajpstest;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+@Ignore
 public class PasswordEncoderTest {
 
 	@Test
