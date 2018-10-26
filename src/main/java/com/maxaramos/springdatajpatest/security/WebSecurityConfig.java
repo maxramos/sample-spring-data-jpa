@@ -27,7 +27,6 @@ public class WebSecurityConfig {
 	@Value("${sdjt.security.digest.key}")
 	private String digestKey;
 
-
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 //	    return new BCryptPasswordEncoder(); // Must not be used for Digest Auth.
