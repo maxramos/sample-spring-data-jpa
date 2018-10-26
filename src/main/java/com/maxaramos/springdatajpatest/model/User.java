@@ -132,10 +132,6 @@ public class User implements UserDetails {
 	@JoinColumn(name = "department_id")
 	private Department department;
 
-	public User() {
-		super();
-	}
-
 	public void addAuthority(Authority authority) {
 		authorities.add(authority);
 	}
