@@ -1,6 +1,7 @@
 package com.maxaramos.springdatajpatest.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
@@ -20,6 +21,13 @@ import com.maxaramos.springdatajpatest.service.UserService;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
+	@Value("${sdjt.security.digest.realm-name}")
+	private String digestRealmName;
+
+	@Value("${sdjt.security.digest.key}")
+	private String digestKey;
+
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 //	    return new BCryptPasswordEncoder(); // Must not be used for Digest Auth.
@@ -37,8 +45,8 @@ public class WebSecurityConfig {
 	@Bean
 	public DigestAuthenticationEntryPoint digestAuthenticationEntryPoint() {
 		DigestAuthenticationEntryPoint entryPoint = new DigestAuthenticationEntryPoint();
-		entryPoint.setRealmName("sdjtRealm");
-		entryPoint.setKey("sdjt");
+		entryPoint.setRealmName(digestRealmName);
+		entryPoint.setKey(digestKey);
 		return entryPoint;
 	}
 
