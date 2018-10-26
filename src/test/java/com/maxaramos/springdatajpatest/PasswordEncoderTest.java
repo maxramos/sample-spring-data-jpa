@@ -1,4 +1,4 @@
-package com.maxaramos.springdatajpstest;
+package com.maxaramos.springdatajpatest;
 
 import org.junit.Ignore;
 import org.junit.Test;
