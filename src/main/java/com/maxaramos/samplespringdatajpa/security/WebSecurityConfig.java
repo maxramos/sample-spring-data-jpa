@@ -10,9 +10,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
+import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.DigestAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.DigestAuthenticationFilter;
 
@@ -21,16 +21,34 @@ import com.maxaramos.samplespringdatajpa.service.UserService;
 @EnableWebSecurity
 public class WebSecurityConfig {
 
-	@Value("${ssdj.security.digest.realm-name}")
-	private String digestRealmName;
+	@Value("${ssdj.security.realm-name}")
+	private String realmName;
 
 	@Value("${ssdj.security.digest.key}")
 	private String digestKey;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
-//	    return new BCryptPasswordEncoder(); // Must not be used for Digest Auth.
-		return NoOpPasswordEncoder.getInstance(); // Used for Digest Auth.
+		// For non digest auth.
+		return new BCryptPasswordEncoder();
+
+		// For digest auth only.
+//		return NoOpPasswordEncoder.getInstance();
+	}
+
+	@Bean
+	public BasicAuthenticationEntryPoint basicAuthenticationEntryPoint() {
+		BasicAuthenticationEntryPoint entryPoint = new BasicAuthenticationEntryPoint();
+		entryPoint.setRealmName(realmName);
+		return entryPoint;
+	}
+
+	@Bean
+	public DigestAuthenticationEntryPoint digestAuthenticationEntryPoint() {
+		DigestAuthenticationEntryPoint entryPoint = new DigestAuthenticationEntryPoint();
+		entryPoint.setRealmName(realmName);
+		entryPoint.setKey(digestKey);
+		return entryPoint;
 	}
 
 	@Bean
@@ -41,23 +59,18 @@ public class WebSecurityConfig {
 		return filter;
 	}
 
-	@Bean
-	public DigestAuthenticationEntryPoint digestAuthenticationEntryPoint() {
-		DigestAuthenticationEntryPoint entryPoint = new DigestAuthenticationEntryPoint();
-		entryPoint.setRealmName(digestRealmName);
-		entryPoint.setKey(digestKey);
-		return entryPoint;
-	}
-
 	@Configuration
 	@Order(Ordered.HIGHEST_PRECEDENCE)
 	public static class WsSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		@Autowired
-		private DigestAuthenticationFilter digestAuthenticationFilter;
+		private BasicAuthenticationEntryPoint basicAuthenticationEntryPoint;
 
 		@Autowired
 		private DigestAuthenticationEntryPoint digestAuthenticationEntryPoint;
+
+		@Autowired
+		private DigestAuthenticationFilter digestAuthenticationFilter;
 
 		@Override
 		protected void configure(HttpSecurity http) throws Exception {
@@ -69,11 +82,12 @@ public class WebSecurityConfig {
 					.antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
 					.anyRequest().authenticated()
 					.and()
-//				.httpBasic()
-//					.and()
-				.addFilterAt(digestAuthenticationFilter, BasicAuthenticationFilter.class)
+				.httpBasic()
+					.and()
+//				.addFilterAt(digestAuthenticationFilter, BasicAuthenticationFilter.class)
 				.exceptionHandling()
-					.authenticationEntryPoint(digestAuthenticationEntryPoint)
+					.authenticationEntryPoint(basicAuthenticationEntryPoint)
+//					.authenticationEntryPoint(digestAuthenticationEntryPoint)
 					.and()
 				.csrf().disable();
 		}
