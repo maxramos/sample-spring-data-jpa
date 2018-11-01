@@ -2,8 +2,6 @@ package com.maxaramos.samplespringdatajpa.controller.rest;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -47,7 +45,7 @@ public class UserRestController {
 
 	@PutMapping
 	@JsonView(UserView.class)
-	public User update(@RequestBody User user, HttpSession session) {
+	public User update(@RequestBody User user) {
 		return userService.save(user.getId(), user);
 	}
 

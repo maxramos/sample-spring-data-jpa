@@ -89,6 +89,7 @@ public class UserService implements UserDetailsService {
 		savedUser.setAge(user.getAge());
 		savedUser.setBirthday(user.getBirthday());
 		savedUser.setGender(user.getGender());
+		savedUser.setContactNumber(user.getContactNumber());
 
 		Address address = user.getAddress();
 		Address savedAddress = savedUser.getAddress();
